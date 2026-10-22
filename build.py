@@ -48,6 +48,7 @@ def slugify(s, maxlen=70):
 
 def load():
     site = json.load(open(SITE))
+    site["site_url"] = site.get("site_url", "").rstrip("/") + "/"
     site["_queue"] = json.load(open(QUEUE)) if os.path.exists(QUEUE) else {"items": []}
     site["_feed"] = json.load(open(FEED)) if os.path.exists(FEED) else []
     # one canonical post record per pin
@@ -152,12 +153,12 @@ def layout(site, title, body, canonical="", active="", og_image=""):
 <meta name="description" content="{esc(site.get('description',''))}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{esc(site.get('site_url',''))}{esc(canonical)}">
+<meta property="og:url" content="{esc(site.get('site_url','').rstrip('/') + canonical)}">
 <meta property="og:image" content="{esc(site.get('site_url','').rstrip('/') + (og_image or '/pins/ho-1.png'))}">
 <meta property="og:image:width" content="1000">
 <meta property="og:image:height" content="1500">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{esc(site.get('site_url',''))}{esc(canonical)}">
+<link rel="canonical" href="{esc(site.get('site_url','').rstrip('/') + canonical)}">
 <style>{CSS}</style>
 <script>window.NP_REGIONS = {regions_js};
 window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
