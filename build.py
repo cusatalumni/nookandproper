@@ -4,7 +4,7 @@
     out/index.html                     home — 4 newest per category, links out
     out/category/<slug>.html           full category feed + the category article
     out/p/<slug>.html                  one page per pin (the Pinterest destination)
-    out/about.html etc.               policy / about pages
+    out/about etc.               policy / about pages
     out/pins/*.png                     the pin images
 """
 import json
@@ -136,10 +136,10 @@ footer.site a:hover{color:var(--accent)}
 """
 
 
-def layout(site, title, body, canonical="", active=""):
+def layout(site, title, body, canonical="", active="", og_image=""):
     regions_js = json.dumps(site.get("regions", {}))
     nav = "".join(
-        f'<a href="/category/{c["slug"]}.html" class="{"on" if active == c["slug"] else ""}">'
+        f'<a href="/category/{c['slug']}" class="{"on" if active == c["slug"] else ""}">'
         f'{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>'
         for c in site["categories"])
     year = date.today().year
@@ -153,6 +153,9 @@ def layout(site, title, body, canonical="", active=""):
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{esc(site.get('site_url',''))}{esc(canonical)}">
+<meta property="og:image" content="{esc(site.get('site_url','').rstrip('/') + (og_image or '/pins/ho-1.png'))}">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1500">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{esc(site.get('site_url',''))}{esc(canonical)}">
 <style>{CSS}</style>
@@ -162,20 +165,20 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <a class="brand" href="/index.html">{esc(site['brand'].split(' ')[0])} <span>{esc(' '.join(site['brand'].split(' ')[1:]))}</span></a>
+  <a class="brand" href="/">{esc(site['brand'].split(' ')[0])} <span>{esc(' '.join(site['brand'].split(' ')[1:]))}</span></a>
   <nav class="main">{nav}</nav>
 </div></header>
 {body}
 <footer class="site"><div class="wrap">
   <div class="cols">
     <div><h4>Categories</h4>
-      {"".join(f'<a href="/category/{c["slug"]}.html">{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>' for c in site["categories"])}
+      {"".join(f'<a href="/category/{c['slug']}">{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>' for c in site["categories"])}
     </div>
     <div><h4>{esc(site['brand'])}</h4>
-      <a href="/about.html">About us</a>
-      <a href="/affiliate-disclosure.html">Affiliate disclosure</a>
-      <a href="/privacy.html">Privacy policy</a>
-      <a href="/terms.html">Terms of use</a>
+      <a href="/about">About us</a>
+      <a href="/affiliate-disclosure">Affiliate disclosure</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms of use</a>
     </div>
   </div>
   <div class="footnote">
@@ -191,7 +194,7 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 
 
 def card(p):
-    return (f'<a class="card" href="/p/{esc(p["slug"])}.html">'
+    return (f'<a class="card" href="/p/{esc(p["slug"])}">'
             f'<img src="/pins/{esc(p["pin"])}" alt="{esc(p["title"])}" loading="lazy">'
             f'<div class="cap"><b>{esc(p["title"])}</b><small>{esc(p["price"])}</small></div></a>')
 
@@ -209,7 +212,7 @@ def render_home(site):
         label = CAT_LABEL.get(c["slug"], c["name"])
         out.append(f"""<section class="section">
   <div class="section-head"><h2>{esc(label)}</h2>
-  <a href="/category/{esc(c['slug'])}.html">All {len(mine)} in {esc(label)} &rarr;</a></div>
+  <a href="/category/{esc(c['slug'])}">All {len(mine)} in {esc(label)} &rarr;</a></div>
   <div class="grid">{''.join(card(p) for p in mine[:PER_HOME])}</div>
 </section>""")
     out.append("</div>")
@@ -288,7 +291,7 @@ product only makes sense as an advert, it does not go in.</p>
 <h2>How we make money</h2>
 <p>Through affiliate commissions. If you buy through a link on this site we may earn a small
 percentage, at no extra cost to you. That is the whole business model — we do not sell your data and we
-do not take payment for a placement. See our <a href="/affiliate-disclosure.html">affiliate
+do not take payment for a placement. See our <a href="/affiliate-disclosure">affiliate
 disclosure</a> for the detail.</p>
 <h2>Corrections</h2>
 <p>Prices and availability change constantly. If something here is wrong, tell us and we will fix it
@@ -356,7 +359,7 @@ for medical clearance to exercise. Use your own judgement and, where it matters,
 product specifications change without notice. Always confirm details on the retailer's listing before
 buying.</p>
 <h2>Affiliate links</h2>
-<p>This site contains affiliate links. See the <a href="/affiliate-disclosure.html">affiliate
+<p>This site contains affiliate links. See the <a href="/affiliate-disclosure">affiliate
 disclosure</a>.</p>
 <h2>Liability</h2>
 <p>The site is provided as-is. To the extent permitted by law, we are not liable for losses arising
@@ -405,26 +408,27 @@ def main():
             shutil.copy2(src, os.path.join(OUT, "assets", fn))
 
     write("index.html", layout(site, f"{site['brand']} — {site.get('tagline','')}",
-                               render_home(site), "/index.html"))
-    urls = ["/index.html", "/about.html", "/affiliate-disclosure.html", "/privacy.html", "/terms.html"]
+                               render_home(site), "/"))
+    urls = ["/index.html", "/about", "/affiliate-disclosure", "/privacy", "/terms"]
     for c in site["categories"]:
         n = max(1, -(-len([p for p in site["_posts"] if p["cat"] == c["slug"]]) // PER_PAGE))
         for pg in range(1, n + 1):
             rel = (f"category/{c['slug']}.html" if pg == 1
                    else f"category/{c['slug']}/page-{pg}.html")
             ttl = CAT_LABEL.get(c["slug"], c["name"]) + ("" if pg == 1 else f" — page {pg}")
+            clean = (f"/category/{c['slug']}" if pg == 1 else f"/category/{c['slug']}/page-{pg}")
             write(rel, layout(site, f"{ttl} — {site['brand']}",
-                              render_category(site, c, pg), f"/{rel}", active=c["slug"]))
-            urls.append("/" + rel)
+                              render_category(site, c, pg), clean, active=c["slug"]))
+            urls.append(clean)
     for p in site["_posts"]:
         rel = f"p/{p['slug']}.html"
         write(rel, layout(site, f"{p['title']} — {site['brand']}", render_post(site, p),
-                          f"/{rel}", active=p["cat"]))
-        urls.append(f"/p/{p['slug']}.html")
+                          f"/p/{p['slug']}", active=p["cat"], og_image=f"/pins/{p['pin']}"))
+        urls.append(f"/p/{p['slug']}")
 
     for key in LEGAL:
         write(f"{key}.html", layout(site, f"{LEGAL[key][0]} — {site['brand']}",
-                                    render_legal(site, key), f"/{key}.html"))
+                                    render_legal(site, key), f"/{key}"))
 
     # pin -> destination sheet for Pinterest (not served, for Manoj)
     lines = ["# Pinterest pin destinations", "",
@@ -433,7 +437,7 @@ def main():
     for p in site["_posts"]:
         lines.append(f"- **{p['title']}** ({p['cat_label']})")
         lines.append(f"  - Pin image: `/pins/{p['pin']}`")
-        lines.append(f"  - Destination: {site.get('site_url','').rstrip('/')}/p/{p['slug']}.html")
+        lines.append(f"  - Destination: {site.get('site_url','').rstrip('/')}/p/{p['slug']}")
         lines.append(f"  - Goes to Amazon: {p['link']}")
     open(os.path.join(BASE, "pin-destinations.md"), "w").write("\n".join(lines) + "\n")
 

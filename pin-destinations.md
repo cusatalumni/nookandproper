@@ -5,81 +5,81 @@ button goes to — do not paste that into Pinterest.
 
 - **The 15-Minute Closet Reset** (Home Organisation)
   - Pin image: `/pins/ho-1.png`
-  - Destination: https://nookandproper.vercel.app/p/the-15-minute-closet-reset.html
+  - Destination: https://nookandproper.vercel.app/p/the-15-minute-closet-reset
   - Goes to Amazon: https://www.amazon.com/s?k=Rubbermaid+Cleverstore+17+Qt+Clear+Storage+Bins+with+Lids&tag=mykada-20
 - **The Pantry Jars That Changed My Kitchen** (Home Organisation)
   - Pin image: `/pins/ho-2.png`
-  - Destination: https://nookandproper.vercel.app/p/the-pantry-jars-that-changed-my-kitchen.html
+  - Destination: https://nookandproper.vercel.app/p/the-pantry-jars-that-changed-my-kitchen
   - Goes to Amazon: https://www.amazon.com/s?k=DWLLZA+KITCHEN+Airtight+Food+Storage+Containers+for+Pantry+With&tag=mykada-20
 - **Under-Bed Storage That Fits a Real Frame** (Home Organisation)
   - Pin image: `/pins/ho-3.png`
-  - Destination: https://nookandproper.vercel.app/p/under-bed-storage-that-fits-a-real-frame.html
+  - Destination: https://nookandproper.vercel.app/p/under-bed-storage-that-fits-a-real-frame
   - Goes to Amazon: https://www.amazon.com/s?k=Plastic+Storage+Bags+with+Easy+Glide+Zipper+Pack+of&tag=mykada-20
 - **Small Closet? These Fixes Nearly Double It** (Home Organisation)
   - Pin image: `/pins/ho-4.png`
-  - Destination: https://nookandproper.vercel.app/p/small-closet-these-fixes-nearly-double-it.html
+  - Destination: https://nookandproper.vercel.app/p/small-closet-these-fixes-nearly-double-it
   - Goes to Amazon: https://www.amazon.com/s?k=VIPEK+X1+Expandable+Clothes+Rack+Heavy+Duty+Adjustable+Closet&tag=mykada-20
 - **The $30 Fix for a Bored Dog** (Pet Enrichment)
   - Pin image: `/pins/pe-1.png`
-  - Destination: https://nookandproper.vercel.app/p/the-30-fix-for-a-bored-dog.html
+  - Destination: https://nookandproper.vercel.app/p/the-30-fix-for-a-bored-dog
   - Goes to Amazon: https://www.amazon.com/s?k=Reggie+Snuffle+Mat+for+Dogs+for+Calming+Support+Reducing&tag=mykada-20
 - **The Fountain My Cats Actually Drink From** (Pet Enrichment)
   - Pin image: `/pins/pe-2.png`
-  - Destination: https://nookandproper.vercel.app/p/the-fountain-my-cats-actually-drink-from.html
+  - Destination: https://nookandproper.vercel.app/p/the-fountain-my-cats-actually-drink-from
   - Goes to Amazon: https://www.amazon.com/s?k=PETLIBRO+Cat+Water+Fountain+Cordless+Pet+Water+Fountain+Battery&tag=mykada-20
 - **The Bed That Calms an Anxious Dog** (Pet Enrichment)
   - Pin image: `/pins/pe-3.png`
-  - Destination: https://nookandproper.vercel.app/p/the-bed-that-calms-an-anxious-dog.html
+  - Destination: https://nookandproper.vercel.app/p/the-bed-that-calms-an-anxious-dog
   - Goes to Amazon: https://www.amazon.com/s?k=Bedsure+Calming+Dog+Bed+Medium+Size+Dog+Donut+Washable&tag=mykada-20
 - **The Calming Trick Vet Nurses Use** (Pet Enrichment)
   - Pin image: `/pins/pe-4.png`
-  - Destination: https://nookandproper.vercel.app/p/the-calming-trick-vet-nurses-use.html
+  - Destination: https://nookandproper.vercel.app/p/the-calming-trick-vet-nurses-use
   - Goes to Amazon: https://www.amazon.com/s?k=Neater+Pet+Brands+Neat+LIK+Express+Dog+Lick+Mat&tag=mykada-20
 - **Dinner in 20 Minutes, One Drawer** (Kitchen & Air Fryer)
   - Pin image: `/pins/kit-1.png`
-  - Destination: https://nookandproper.vercel.app/p/dinner-in-20-minutes-one-drawer.html
+  - Destination: https://nookandproper.vercel.app/p/dinner-in-20-minutes-one-drawer
   - Goes to Amazon: https://www.amazon.com/s?k=Cuisinart+Air+Fryer+Glass+Basket+ClearView+Window+Functions+Qt&tag=mykada-20
 - **The Containers That Decide If Leftovers Get Eaten** (Kitchen & Air Fryer)
   - Pin image: `/pins/kit-2.png`
-  - Destination: https://nookandproper.vercel.app/p/the-containers-that-decide-if-leftovers-get-eaten.html
+  - Destination: https://nookandproper.vercel.app/p/the-containers-that-decide-if-leftovers-get-eaten
   - Goes to Amazon: https://www.amazon.com/s?k=Razab+24+Pc+Airtight+Glass+Food+Storage+Containers+Glass&tag=mykada-20
 - **The $12 That Ends the Soaking** (Kitchen & Air Fryer)
   - Pin image: `/pins/kit-3.png`
-  - Destination: https://nookandproper.vercel.app/p/the-12-that-ends-the-soaking.html
+  - Destination: https://nookandproper.vercel.app/p/the-12-that-ends-the-soaking
   - Goes to Amazon: https://www.amazon.com/s?k=Vailnd+Air+Fryer+Liners+Disposable+305Pcs+Square+for+QT&tag=mykada-20
 - **Small Appliances Under $100 That Earn Their Space** (Kitchen & Air Fryer)
   - Pin image: `/pins/kit-4.png`
-  - Destination: https://nookandproper.vercel.app/p/small-appliances-under-100-that-earn-their-space.html
+  - Destination: https://nookandproper.vercel.app/p/small-appliances-under-100-that-earn-their-space
   - Goes to Amazon: https://www.amazon.com/s?k=Braun+MultiQuick+in+Immersion+Blender+Food+Processor+Hand+Blender&tag=mykada-20
 - **10,000 Steps Without Leaving Home** (Home Fitness)
   - Pin image: `/pins/fit-1.png`
-  - Destination: https://nookandproper.vercel.app/p/10-000-steps-without-leaving-home.html
+  - Destination: https://nookandproper.vercel.app/p/10-000-steps-without-leaving-home
   - Goes to Amazon: https://www.amazon.com/s?k=UREVO+CyberPad+Smart+Walking+Pad+with+14+Auto+Incline&tag=mykada-20
 - **The $35 That Stops Your Walking Pad Waking the Neighbours** (Home Fitness)
   - Pin image: `/pins/fit-2.png`
-  - Destination: https://nookandproper.vercel.app/p/the-35-that-stops-your-walking-pad-waking-the-neighbours.html
+  - Destination: https://nookandproper.vercel.app/p/the-35-that-stops-your-walking-pad-waking-the-neighbours
   - Goes to Amazon: https://www.amazon.com/s?k=KANGAROO+Inch+Cushioned+Anti+Fatigue+Kitchen+Mat+for+Floor&tag=mykada-20
 - **Cozy Cardio: The Gym-Free Routine That Stuck** (Home Fitness)
   - Pin image: `/pins/fit-3.png`
-  - Destination: https://nookandproper.vercel.app/p/cozy-cardio-the-gym-free-routine-that-stuck.html
+  - Destination: https://nookandproper.vercel.app/p/cozy-cardio-the-gym-free-routine-that-stuck
   - Goes to Amazon: https://www.amazon.com/s?k=ProBody+Pilates+Circle+14+Inch+Magic+Circle+Pilates+Ring&tag=mykada-20
 - **A Home Gym That Fits in One Cupboard** (Home Fitness)
   - Pin image: `/pins/fit-4.png`
-  - Destination: https://nookandproper.vercel.app/p/a-home-gym-that-fits-in-one-cupboard.html
+  - Destination: https://nookandproper.vercel.app/p/a-home-gym-that-fits-in-one-cupboard
   - Goes to Amazon: https://www.amazon.com/s?k=PIRIER+Adjustable+Dumbbell+Set+50LB+18+in+Free+Weight&tag=mykada-20
 - **The $50 Fix for a $1,000 Problem** (Sleep & Comfort)
   - Pin image: `/pins/slp-1.png`
-  - Destination: https://nookandproper.vercel.app/p/the-50-fix-for-a-1-000-problem.html
+  - Destination: https://nookandproper.vercel.app/p/the-50-fix-for-a-1-000-problem
   - Goes to Amazon: https://www.amazon.com/s?k=SOOSLEEPY+Inch+Zone+King+Memory+Foam+Mattress+Topper+Egg&tag=mykada-20
 - **Blackout Curtains That Actually Block Light** (Sleep & Comfort)
   - Pin image: `/pins/slp-2.png`
-  - Destination: https://nookandproper.vercel.app/p/blackout-curtains-that-actually-block-light.html
+  - Destination: https://nookandproper.vercel.app/p/blackout-curtains-that-actually-block-light
   - Goes to Amazon: https://www.amazon.com/s?k=MIULEE+100+Blackout+Linen+Curtains+for+Bedroom+42+84&tag=mykada-20
 - **Best Pillow for Neck Pain (I Tried Six)** (Sleep & Comfort)
   - Pin image: `/pins/slp-3.png`
-  - Destination: https://nookandproper.vercel.app/p/best-pillow-for-neck-pain-i-tried-six.html
+  - Destination: https://nookandproper.vercel.app/p/best-pillow-for-neck-pain-i-tried-six
   - Goes to Amazon: https://www.amazon.com/s?k=Ergo+Pillow+for+Sleep+Apnea+Neck+Pain+and+Snoring&tag=mykada-20
 - **The Only Fix When They Get Up Earlier Than You** (Sleep & Comfort)
   - Pin image: `/pins/slp-4.png`
-  - Destination: https://nookandproper.vercel.app/p/the-only-fix-when-they-get-up-earlier-than-you.html
+  - Destination: https://nookandproper.vercel.app/p/the-only-fix-when-they-get-up-earlier-than-you
   - Goes to Amazon: https://www.amazon.com/s?k=Adaptive+Sound+Technologies+LectroFan+EVO+Sound+Machine+White+Non&tag=mykada-20
