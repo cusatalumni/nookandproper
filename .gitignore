@@ -1,0 +1,6 @@
+content/imgcache/
+__pycache__/
+*.pyc
+.DS_Store
+out/pins/_layout-proof.png
+pins/_layout-proof.png

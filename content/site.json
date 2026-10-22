@@ -1,0 +1,141 @@
+{
+  "brand": "Kada Finds",
+  "tagline": "Trending finds, pinned daily",
+  "headline": "Five things women are actually buying on Amazon this month",
+  "subhead": "No beauty, no fashion. Just the categories with real sales movement behind them — home organisation, pet enrichment, the air fryer kitchen, walking pads, and sleep. Every pick links straight to Amazon.",
+  "description": "A daily-updated edit of the Amazon categories with real sales momentum, minus beauty and fashion. Pins, product picks and price bands, updated every day.",
+  "tag": "mykada-20",
+  "updated": "2026-10-21",
+  "categories": [
+    {
+      "slug": "home-organization",
+      "name": "Home Organisation",
+      "why": "closet-organiser units hit their highest month of the year in July — 431,000 units across the top 50 listings, up from 215,000 in May (+39.6% month on month), with 405,080 Amazon searches. Autumn closet swaps and pre-holiday resets keep the same shelf leading into October.",
+      "keywords": ["closet organizer ideas small closet", "amazon closet organization must haves", "under bed storage bins", "pantry organization containers", "dorm room storage"],
+      "posts": [
+        {
+          "date": "21 October 2026",
+          "title": "The 15-minute closet reset that made our bedroom feel bigger",
+          "lede": "You do not need a renovation, a carpenter, or a weekend. You need six containers, one bin bag, and fifteen minutes you were going to spend scrolling anyway.",
+          "body": [
+            "Home organisation is the single strongest non-beauty category on Amazon right now, and the reason is not aesthetic — it is that the average starter kit costs under $35. Clear stackable bins, over-the-door racks and under-bed bags all sit in the $16–40 band, which is why this is the category people buy their way into rather than save up for.",
+            "The order that works: empty one zone completely, sort into keep / relocate / donate, then put back only what the containers can hold. The container is the constraint, not your willpower. That is the whole trick, and it is why clear bins beat decorative baskets — you can see when the constraint is being violated.",
+            "Start with the zone you look at most, not the one that bothers you most. The entryway or the pantry shelf will change how the room feels within an hour, which is the feedback loop that keeps you going to the closet next weekend.",
+            "Price reality check: everything pinned below is a typical street price across top listings this month, not a quote. Amazon moves these around constantly, especially as early holiday pricing lands."
+          ],
+          "pins": [
+            { "image": "home-01.png", "title": "7 Pantry Containers That Made My Kitchen Look Renovated", "price": "Pantry container sets · $25–60", "query": "pantry organization containers set" },
+            { "image": "home-02.png", "title": "The 15-Minute Closet Reset (No Renovation, No Carpenter)", "price": "Clear stackable bins · $16–35", "query": "clear stackable storage bins closet" },
+            { "image": "home-03.png", "title": "Under-Bed Storage That Actually Fits a Real Bed Frame", "price": "Under-bed bags & bins · $20–40", "query": "under bed storage bags bins" },
+            { "image": "home-04.png", "title": "Small Closet? These 5 Fixes Nearly Double Your Space", "price": "Over-the-door organisers · $15–30", "query": "over the door closet organizer" },
+            { "image": "home-05.png", "title": "Dorm Storage That Survives Move-Out Day", "price": "Shoe racks & stackable shelves · $10–30", "query": "dorm room storage shoe rack stackable" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pet-enrichment",
+      "name": "Pet Enrichment",
+      "why": "cat-tree searches reached 764,193 in July, up 6.8% month on month, at an average price of $53. Boredom and behaviour framing has replaced plain toy buying — and pets are now Q4 gift recipients. One caveat: unit sales are still 8.1% below August 2025, so this is rising interest, not proven growth.",
+      "keywords": ["cat tree for small apartment", "dog enrichment toys", "snuffle mat for anxious dog", "automatic cat water fountain", "cat wall shelves"],
+      "posts": [
+        {
+          "date": "21 October 2026",
+          "title": "The $30 fix for a bored indoor cat",
+          "lede": "Indoor season is starting. If your cat is climbing the curtains at 4am, the answer is almost never a bigger toy box — it is one thing that makes them work for food.",
+          "body": [
+            "Pet supplies is one of the three fastest-growing categories on Amazon this year, and the shift inside it is specific: people stopped buying toys and started buying enrichment. A snuffle mat, a puzzle feeder, a lick mat — the category is small-ticket ($18–35) but it solves a behaviour problem, which is a far stronger purchase driver than novelty.",
+            "The mechanism is simple. A cat or dog that eats from a bowl in ninety seconds has an empty afternoon. Scatter the same food across a snuffle mat and you have bought ten minutes of focused sniffing, which is the closest thing to a natural foraging cycle an indoor animal gets. Most people report the difference in the first week — calmer evenings, less furniture damage.",
+            "The water fountain is the other quiet winner in this category. Cats are chronically under-hydrated because they do not like still water, and a stainless fountain at $30–55 is the cheapest intervention with a measurable effect on intake.",
+            "Two honest caveats. Cat-tree search interest is recovering, but unit volume is still below last year — so treat the trend as rising attention rather than a boom. And enrichment only works if you rotate it; the same mat every day becomes furniture within a fortnight."
+          ],
+          "pins": [
+            { "image": "pet-01.png", "title": "The $30 Fix for a Bored Indoor Cat", "price": "Snuffle mats & puzzle feeders · $18–35", "query": "snuffle mat puzzle feeder cat" },
+            { "image": "pet-02.png", "title": "Snuffle Mat: Why Every Anxious Dog Needs One", "price": "Lick mats & slow feeders · $10–20", "query": "snuffle mat for anxious dog" },
+            { "image": "pet-03.png", "title": "Cat Wall Shelves for Apartments With No Floor Space", "price": "Cat trees & wall shelves · $25–90", "query": "cat wall shelves furniture small apartment" },
+            { "image": "pet-04.png", "title": "The Fountain My Cats Actually Drink From", "price": "Stainless automatic fountains · $30–55", "query": "stainless steel automatic cat water fountain" },
+            { "image": "pet-05.png", "title": "5 Enrichment Toys That Survive a Destructive Chewer", "price": "Calming beds & chew toys · $25–50", "query": "indestructible dog toys aggressive chewer" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kitchen-air-fryer",
+      "name": "Kitchen & Air Fryer",
+      "why": "air fryer drew 2,372,540 Amazon searches in a single month — one of the largest query volumes of any non-beauty product we looked at — with 2.33 million units and $236.9M across the top 50 over twelve months. Kitchen & dining is also the only tracked category where the average price is falling, which means demand is deal-led right now.",
+      "keywords": ["air fryer recipes for beginners", "best air fryer for family of 4", "glass meal prep containers", "amazon kitchen must haves", "small kitchen appliances under $100"],
+      "posts": [
+        {
+          "date": "21 October 2026",
+          "title": "Weeknight dinner in 20 minutes, air fryer only",
+          "lede": "The air fryer is not a gadget anymore — it is the second most-searched kitchen product on Amazon, with 2.37 million searches in one month. Here is what to actually buy around it.",
+          "body": [
+            "Two things are true at once in this category. Search demand is enormous and stable, and the average selling price is falling — kitchen and dining is the only tracked category where the 30-day average price moved down. That combination means the deals are real, and that buying at full price is a mistake you can simply avoid by waiting a fortnight.",
+            "For a family of four, the useful size is 5–6 quarts. Smaller and you are cooking in two batches, which defeats the point. The best-selling models sit at $89.99, and that is the price point where capacity, wattage and warranty stop improving meaningfully.",
+            "The accessories matter more than people expect, and they are almost all under $20: parchment liners save you the soak, a silicone basket insert doubles as a steamer, and a wire rack lets you cook two layers. The accessories that do not earn their space are the ones that only work in one model.",
+            "The one thing worth spending on beyond the fryer is glass storage. If you are cooking for the week, the containers you portion into decide whether leftovers get eaten. A $30 glass set at $25–45 has a better return than any single-purpose gadget."
+          ],
+          "pins": [
+            { "image": "kitchen-01.png", "title": "20-Minute Weeknight Dinners (Air Fryer Only)", "price": "5–6 qt air fryers · $70–120", "query": "air fryer 6 quart family" },
+            { "image": "kitchen-02.png", "title": "Glass Meal Prep Containers I Use Every Single Day", "price": "Glass storage sets · $25–45", "query": "glass meal prep containers set" },
+            { "image": "kitchen-03.png", "title": "Air Fryer Accessories Worth Buying (and 3 That Aren't)", "price": "Liners & inserts · $10–20", "query": "air fryer accessories liners silicone" },
+            { "image": "kitchen-04.png", "title": "Small Kitchen Appliances Under $100 That Earn Their Space", "price": "Immersion blenders & choppers · $30–60", "query": "immersion blender mini food chopper" },
+            { "image": "kitchen-05.png", "title": "Ceramic Nonstick That Survived My Family", "price": "Cookware sets · $60–150", "query": "ceramic nonstick cookware set" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "home-fitness",
+      "name": "Walking Pads & Home Fitness",
+      "why": "walking-pad units rose 14% month on month in July and sit 661.9% above August 2025 — 317,850 units and $58.4M over twelve months at an average of $154.83. But keyword searches fell 6.9% in the same month, so this is discount-led volume rather than fresh demand.",
+      "keywords": ["walking pad for small apartment", "under desk treadmill worth it", "cozy cardio at home", "walking pad with incline", "small space home gym"],
+      "posts": [
+        {
+          "date": "21 October 2026",
+          "title": "10,000 steps without leaving the house",
+          "lede": "Walking pads exploded 661% year on year — and the search data says that growth is being driven by price cuts, not hype. Which is good news if you have been waiting.",
+          "body": [
+            "This is the most interesting category in the set because the two signals disagree. Units are up 14% month on month and 661.9% year on year. Searches are down 6.9% over the same month. When volume rises while interest falls, the driver is price — entry models have dropped under $100, and people who were already curious are converting.",
+            "That makes right now an unusually good moment to buy and an unusually bad moment to pay list price. The volume leaders sit at $89.98–$114.99; the average across the category is $154.83, which is what you pay for incline and a handle bar.",
+            "The practical question is whether you need incline. If you are walking while working — calls, email, reading — flat is fine and cheaper. Incline is for people using it as their actual cardio, and it is worth the extra $100 only if the flat version would otherwise sit folded under the bed.",
+            "The thing that decides whether a walking pad survives past January is not the pad, it is the setup: an anti-fatigue mat underneath cuts the noise and the vibration through the floor, and a standing desk height that lets you walk without looking down. Budget $30–60 for the mat and treat it as part of the purchase."
+          ],
+          "pins": [
+            { "image": "fitness-01.png", "title": "10,000 Steps Without Leaving the House", "price": "Foldable walking pads · $90–180", "query": "walking pad treadmill under desk" },
+            { "image": "fitness-02.png", "title": "Walking Pad in a Small Apartment: What I Learned", "price": "Anti-fatigue mats · $30–60", "query": "anti fatigue standing mat" },
+            { "image": "fitness-03.png", "title": "Cozy Cardio: The Gym-Free Routine That Stuck", "price": "Pilates rings & thick mats · $20–40", "query": "pilates ring thick yoga mat" },
+            { "image": "fitness-04.png", "title": "Walking Pad With Incline vs Flat — Worth the Extra $100?", "price": "Incline pads · $150–330", "query": "walking pad with incline handle bar" },
+            { "image": "fitness-05.png", "title": "A Home Gym That Fits in One Cupboard", "price": "Dumbbells & bands · $30–120", "query": "adjustable dumbbells resistance bands set" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sleep-comfort",
+      "name": "Sleep & Bedroom Comfort",
+      "why": "mattress toppers moved 2,503,800 units and $102.8M over twelve months, up 21.1% year on year, with 666,121 searches in July alone (+8.9% month on month). Bedroom furniture is the fastest-growing pocket inside home and kitchen at +28%. The hook is consistent: hot sleeper, or back pain.",
+      "keywords": ["mattress topper for back pain", "cooling mattress topper for hot sleepers", "blackout curtains for bedroom", "best pillow for neck pain", "dorm room bedding"],
+      "posts": [
+        {
+          "date": "21 October 2026",
+          "title": "The $50 fix for a $1,000 problem",
+          "lede": "Mattress toppers are up 21% year on year and the average price is $54. Here is why that is the highest-return purchase in this entire list.",
+          "body": [
+            "A mattress topper is the rare product where the cheap version genuinely competes. Average selling price across the category is $54.22, top sellers cluster at $37.89–$49.99, and it addresses the two things people actually complain about — heat and pressure — without replacing a mattress that is structurally fine.",
+            "The choice splits cleanly. If you wake up hot, you want a cooling gel or bamboo topper; shredded memory foam sleeps warmer, whatever the listing says. If you wake up with lower-back ache, you want density, not cooling, and a 3-inch topper at the top of the band beats a 2-inch one that looks like better value per dollar.",
+            "The pillow matters as much as the topper and costs less. Side sleepers need loft that fills the gap between shoulder and ear; back sleepers need less. Most people buy one pillow for their whole life and wonder why their neck hurts — a $25–60 replacement is the fastest single change in this category.",
+            "Two additions that consistently earn their place: blackout curtains at $20–45, which do more for sleep timing than any supplement, and a white-noise machine at $25–55, which is the only reliable fix for a partner who gets up earlier than you."
+          ],
+          "pins": [
+            { "image": "sleep-01.png", "title": "The $50 Fix for a $1,000 Mattress Problem", "price": "Mattress toppers · $40–90", "query": "mattress topper back pain" },
+            { "image": "sleep-02.png", "title": "Cooling Topper for Hot Sleepers — Does It Actually Work?", "price": "Cooling gel & bamboo toppers · $40–90", "query": "cooling mattress topper hot sleepers" },
+            { "image": "sleep-03.png", "title": "Blackout Curtains That Actually Block Light", "price": "Blackout curtains · $20–45", "query": "blackout curtains bedroom 100 percent" },
+            { "image": "sleep-04.png", "title": "Best Pillow for Neck Pain (I Tried Six)", "price": "Memory-foam pillows · $25–60", "query": "best pillow neck pain side sleeper" },
+            { "image": "sleep-05.png", "title": "Sleep Like a Hotel Room for Under $100", "price": "Bamboo sheet sets · $35–80", "query": "cooling bamboo sheets set" }
+          ]
+        }
+      ]
+    }
+  ]
+}
