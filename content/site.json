@@ -293,5 +293,23 @@
       ]
     }
   ],
-  "site_url": "https://nookandproper.vercel.app/"
+  "site_url": "https://nookandproper.vercel.app/",
+  "default_region": "US",
+  "regions": {
+    "US": {
+      "domain": "www.amazon.com",
+      "tag": "mykada-20",
+      "label": "United States"
+    },
+    "IN": {
+      "domain": "www.amazon.in",
+      "tag": "httpcodingonl-21",
+      "label": "India"
+    },
+    "AE": {
+      "domain": "www.amazon.ae",
+      "tag": "gifthouse-21",
+      "label": "United Arab Emirates"
+    }
+  }
 }

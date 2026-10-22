@@ -30,6 +30,17 @@ def esc(s):
             .replace('"', "&quot;"))
 
 
+def amazon_path(link):
+    """'/s?k=...' from a full Amazon URL, tag stripped — the geo script re-adds host+tag."""
+    from urllib.parse import urlsplit, parse_qsl, urlencode
+    try:
+        u = urlsplit(link)
+    except Exception:
+        return "/"
+    q = [(k, v) for k, v in parse_qsl(u.query) if k != "tag"]
+    return u.path + ("?" + urlencode(q) if q else "")
+
+
 def slugify(s, maxlen=70):
     s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
     return s[:maxlen].rstrip("-")
@@ -126,6 +137,7 @@ footer.site a:hover{color:var(--accent)}
 
 
 def layout(site, title, body, canonical="", active=""):
+    regions_js = json.dumps(site.get("regions", {}))
     nav = "".join(
         f'<a href="/category/{c["slug"]}.html" class="{"on" if active == c["slug"] else ""}">'
         f'{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>'
@@ -144,6 +156,9 @@ def layout(site, title, body, canonical="", active=""):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{esc(site.get('site_url',''))}{esc(canonical)}">
 <style>{CSS}</style>
+<script>window.NP_REGIONS = {regions_js};
+window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
+<script src="/assets/geo.js" defer></script>
 </head>
 <body>
 <header class="site"><div class="wrap">
@@ -241,7 +256,8 @@ def render_post(site, p):
       <h1>{esc(p['title'])}</h1>
       <p class="meta">{esc(p['date'])}{(' · ' + esc(p['price'])) if p['price'] else ''}</p>
       <p>{esc(p['body'])}</p>
-      <p><a class="buy" href="{esc(p['link'])}" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a></p>
+      <p><a class="buy" href="{esc(p['link'])}" data-amazon-path="{esc(amazon_path(p['link']))}" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a></p>
+      <p class="small" hidden>Showing the <b data-region-label></b> store for your location.</p>
       <p class="small">Opens the listing on Amazon.com. Price shown is the usual street price for this
       kind of product, not a live quote — check the listing for the current figure.</p>
       <div class="disclosure"><b>Affiliate disclosure.</b> We earn a commission from qualifying purchases
@@ -288,6 +304,10 @@ linking to Amazon.com.</p>
 <li>The price you pay is exactly the same. The commission comes out of Amazon's margin, not your pocket.</li>
 <li>We are never paid to feature a specific product, and no brand can buy a place in our edit.</li>
 </ul>
+<h2>Different countries</h2>
+<p>We take part in the Amazon Associates programmes in more than one country. Depending on where you
+are, product links open amazon.com, amazon.in or amazon.ae, with that marketplace's associate tag. The
+product may cost more or less than the figure shown here, and may not be sold in your country at all.</p>
 <h2>Prices</h2>
 <p>Price bands shown on this site are typical street prices for that kind of product at the time of
 writing. They are guidance, not a quote, and they change — sometimes within hours. Always check the
@@ -306,6 +326,11 @@ be read, not to be survived.</p>
 <h2>What we collect</h2>
 <p>The site itself sets no tracking cookies and asks for no personal details. There is no account, no
 comment system and no newsletter sign-up form.</p>
+<h2>Which Amazon store you see</h2>
+<p>The site reads the country your connection comes from — a two-letter code, provided by our host's
+edge network — so that the product links open the Amazon store for your country with the matching
+associate tag. That is the only use of it. It is not stored, not profiled, and no cookie is set for
+it.</p>
 <h2>Third parties</h2>
 <p>When you click a product link you leave this site for Amazon, which sets its own cookies and
 applies its own privacy policy. Amazon's affiliate programme may record that the visit came from here
@@ -370,6 +395,14 @@ def main():
         os.makedirs(os.path.dirname(path) or OUT, exist_ok=True)
         open(path, "w").write(html)
         written.append(rel)
+
+    # static assets the pages need (fonts are build-only, not served)
+    import shutil
+    os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
+    for fn in os.listdir(os.path.join(BASE, "assets")):
+        src = os.path.join(BASE, "assets", fn)
+        if os.path.isfile(src) and fn.endswith(".js"):
+            shutil.copy2(src, os.path.join(OUT, "assets", fn))
 
     write("index.html", layout(site, f"{site['brand']} — {site.get('tagline','')}",
                                render_home(site), "/index.html"))
