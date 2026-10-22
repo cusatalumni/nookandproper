@@ -137,9 +137,31 @@ footer.site a:hover{color:var(--accent)}
 """
 
 
-def layout(site, title, body, canonical="", active="", og_image=""):
+def layout(site, title, body, canonical="", active="", og_image="",
+           page_type="website", article=None):
     regions_js = json.dumps(site.get("regions", {}))
     verify_meta = "\n".join(site.get("verify_meta", []))
+    article_meta = ""
+    jsonld = ""
+    if article:
+        base = site.get("site_url", "").rstrip("/")
+        article_meta = (
+            f'\n<meta property="article:published_time" content="{esc(article["published"])}">'
+            f'\n<meta property="article:section" content="{esc(article["section"])}">'
+            f'\n<meta property="article:author" content="{esc(site["brand"])}">'
+            f'\n<meta name="author" content="{esc(site["brand"])}">')
+        ld = {
+            "@context": "https://schema.org", "@type": "Article",
+            "headline": title, "datePublished": article["published"],
+            "articleSection": article["section"],
+            "author": {"@type": "Organization", "name": site["brand"]},
+            "publisher": {"@type": "Organization", "name": site["brand"]},
+            "mainEntityOfPage": base + canonical,
+            "image": base + "/pins/" + article["pin"],
+            "description": site.get("description", ""),
+        }
+        jsonld = ('\n<script type="application/ld+json">'
+                  + json.dumps(ld) + "</script>")
     nav = "".join(
         f'<a href="/category/{c['slug']}" class="{"on" if active == c["slug"] else ""}">'
         f'{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>'
@@ -153,7 +175,7 @@ def layout(site, title, body, canonical="", active="", og_image=""):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(site.get('description',''))}">
 <meta property="og:title" content="{esc(title)}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{esc(page_type)}">{article_meta}
 <meta property="og:url" content="{esc(site.get('site_url','').rstrip('/') + canonical)}">
 <meta property="og:image" content="{esc(site.get('site_url','').rstrip('/') + (og_image or '/pins/ho-1.png'))}">
 <meta property="og:image:width" content="1000">
@@ -161,7 +183,7 @@ def layout(site, title, body, canonical="", active="", og_image=""):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{esc(site.get('site_url','').rstrip('/') + canonical)}">
 {verify_meta}
-<style>{CSS}</style>
+<style>{CSS}</style>{jsonld}
 <script>window.NP_REGIONS = {regions_js};
 window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 <script src="/assets/geo.js" defer></script>
@@ -435,7 +457,10 @@ def main():
     for p in site["_posts"]:
         rel = f"p/{p['slug']}.html"
         write(rel, layout(site, f"{p['title']} — {site['brand']}", render_post(site, p),
-                          f"/p/{p['slug']}", active=p["cat"], og_image=f"/pins/{p['pin']}"))
+                          f"/p/{p['slug']}", active=p["cat"], og_image=f"/pins/{p['pin']}",
+                          page_type="article",
+                          article={"published": p["date"] or date.today().isoformat(),
+                                   "section": p["cat_label"], "pin": p["pin"]}))
         urls.append(f"/p/{p['slug']}")
 
     for key in LEGAL:
