@@ -57,10 +57,22 @@ def create_board(name, description=""):
                 {"Authorization": "Bearer " + at, "Content-Type": "application/json"})
 
 
-def pin(board_id, image_url, title, description, link):
+def _media(image_url=None, image_file=None):
+    """Pinterest accepts either a public URL or the raw bytes, base64-encoded."""
+    if image_file:
+        import base64
+        data = base64.b64encode(open(image_file, "rb").read()).decode()
+        ctype = "image/png" if image_file.lower().endswith(".png") else "image/jpeg"
+        return {"source_type": "image_base64", "content_type": ctype, "data": data}
+    if not image_url:
+        raise SystemExit("need --image-url or --image-file")
+    return {"source_type": "image_url", "url": image_url}
+
+
+def pin(board_id, title, description, link, image_url=None, image_file=None):
     at = refresh()
-    body = {"board_id": board_id, "media_source": {"source_type": "image_url", "url": image_url},
-            "title": title[:100], "description": description[:800], "link": link}
+    body = {"board_id": board_id, "media_source": _media(image_url, image_file),
+            "title": (title or "")[:100], "description": (description or "")[:800], "link": link}
     return _req(API + "/pins", body,
                 {"Authorization": "Bearer " + at, "Content-Type": "application/json"})
 
@@ -79,7 +91,8 @@ def main():
     elif a.cmd == "create-board":
         print(json.dumps(create_board(a.name), indent=2)[:400])
     elif a.cmd == "pin":
-        print(json.dumps(pin(a.board_id, a.image_url, a.title, a.description, a.link), indent=2)[:600])
+        print(json.dumps(pin(a.board_id, a.title, a.description, a.link,
+                             image_url=a.image_url, image_file=a.image_file), indent=2)[:600])
 
 
 if __name__ == "__main__":
