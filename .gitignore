@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 out/pins/_layout-proof.png
 pins/_layout-proof.png
+pins/
