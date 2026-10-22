@@ -132,6 +132,12 @@ def render(site):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(site['brand'])} — {esc(site.get('tagline','Trending finds, pinned daily'))}</title>
 <meta name="description" content="{esc(site.get('description',''))}">
+<meta property="og:title" content="{esc(site['brand'])} — {esc(site.get('tagline',''))}">
+<meta property="og:description" content="{esc(site.get('description',''))}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{esc(site.get('site_url',''))}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{esc(site.get('site_url',''))}">
 <style>{CSS}</style>
 </head>
 <body>

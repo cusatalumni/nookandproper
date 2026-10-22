@@ -1,9 +1,9 @@
 {
-  "brand": "Kada Finds",
-  "tagline": "Trending finds, pinned daily",
+  "brand": "Nook & Proper",
+  "tagline": "Practical finds for the home, pinned daily",
   "headline": "Five things women are actually buying on Amazon this month",
   "subhead": "No beauty, no fashion. Just the categories with real sales movement behind them — home organisation, pet enrichment, the air fryer kitchen, walking pads, and sleep. Every pick links straight to Amazon.",
-  "description": "A daily-updated edit of the Amazon categories with real sales momentum, minus beauty and fashion. Pins, product picks and price bands, updated every day.",
+  "description": "Nook & Proper is a daily-updated edit of the Amazon categories with real sales momentum — minus beauty and fashion. Pins, product picks and price bands, updated every day.",
   "tag": "mykada-20",
   "updated": "2026-10-21",
   "categories": [
@@ -11,7 +11,13 @@
       "slug": "home-organization",
       "name": "Home Organisation",
       "why": "closet-organiser units hit their highest month of the year in July — 431,000 units across the top 50 listings, up from 215,000 in May (+39.6% month on month), with 405,080 Amazon searches. Autumn closet swaps and pre-holiday resets keep the same shelf leading into October.",
-      "keywords": ["closet organizer ideas small closet", "amazon closet organization must haves", "under bed storage bins", "pantry organization containers", "dorm room storage"],
+      "keywords": [
+        "closet organizer ideas small closet",
+        "amazon closet organization must haves",
+        "under bed storage bins",
+        "pantry organization containers",
+        "dorm room storage"
+      ],
       "posts": [
         {
           "date": "21 October 2026",
@@ -24,11 +30,36 @@
             "Price reality check: everything pinned below is a typical street price across top listings this month, not a quote. Amazon moves these around constantly, especially as early holiday pricing lands."
           ],
           "pins": [
-            { "image": "home-01.png", "title": "7 Pantry Containers That Made My Kitchen Look Renovated", "price": "Pantry container sets · $25–60", "query": "pantry organization containers set" },
-            { "image": "home-02.png", "title": "The 15-Minute Closet Reset (No Renovation, No Carpenter)", "price": "Clear stackable bins · $16–35", "query": "clear stackable storage bins closet" },
-            { "image": "home-03.png", "title": "Under-Bed Storage That Actually Fits a Real Bed Frame", "price": "Under-bed bags & bins · $20–40", "query": "under bed storage bags bins" },
-            { "image": "home-04.png", "title": "Small Closet? These 5 Fixes Nearly Double Your Space", "price": "Over-the-door organisers · $15–30", "query": "over the door closet organizer" },
-            { "image": "home-05.png", "title": "Dorm Storage That Survives Move-Out Day", "price": "Shoe racks & stackable shelves · $10–30", "query": "dorm room storage shoe rack stackable" }
+            {
+              "image": "home-01.png",
+              "title": "7 Pantry Containers That Made My Kitchen Look Renovated",
+              "price": "Pantry container sets · $25–60",
+              "query": "pantry organization containers set"
+            },
+            {
+              "image": "home-02.png",
+              "title": "The 15-Minute Closet Reset (No Renovation, No Carpenter)",
+              "price": "Clear stackable bins · $16–35",
+              "query": "clear stackable storage bins closet"
+            },
+            {
+              "image": "home-03.png",
+              "title": "Under-Bed Storage That Actually Fits a Real Bed Frame",
+              "price": "Under-bed bags & bins · $20–40",
+              "query": "under bed storage bags bins"
+            },
+            {
+              "image": "home-04.png",
+              "title": "Small Closet? These 5 Fixes Nearly Double Your Space",
+              "price": "Over-the-door organisers · $15–30",
+              "query": "over the door closet organizer"
+            },
+            {
+              "image": "home-05.png",
+              "title": "Dorm Storage That Survives Move-Out Day",
+              "price": "Shoe racks & stackable shelves · $10–30",
+              "query": "dorm room storage shoe rack stackable"
+            }
           ]
         }
       ]
@@ -37,7 +68,13 @@
       "slug": "pet-enrichment",
       "name": "Pet Enrichment",
       "why": "cat-tree searches reached 764,193 in July, up 6.8% month on month, at an average price of $53. Boredom and behaviour framing has replaced plain toy buying — and pets are now Q4 gift recipients. One caveat: unit sales are still 8.1% below August 2025, so this is rising interest, not proven growth.",
-      "keywords": ["cat tree for small apartment", "dog enrichment toys", "snuffle mat for anxious dog", "automatic cat water fountain", "cat wall shelves"],
+      "keywords": [
+        "cat tree for small apartment",
+        "dog enrichment toys",
+        "snuffle mat for anxious dog",
+        "automatic cat water fountain",
+        "cat wall shelves"
+      ],
       "posts": [
         {
           "date": "21 October 2026",
@@ -50,11 +87,36 @@
             "Two honest caveats. Cat-tree search interest is recovering, but unit volume is still below last year — so treat the trend as rising attention rather than a boom. And enrichment only works if you rotate it; the same mat every day becomes furniture within a fortnight."
           ],
           "pins": [
-            { "image": "pet-01.png", "title": "The $30 Fix for a Bored Indoor Cat", "price": "Snuffle mats & puzzle feeders · $18–35", "query": "snuffle mat puzzle feeder cat" },
-            { "image": "pet-02.png", "title": "Snuffle Mat: Why Every Anxious Dog Needs One", "price": "Lick mats & slow feeders · $10–20", "query": "snuffle mat for anxious dog" },
-            { "image": "pet-03.png", "title": "Cat Wall Shelves for Apartments With No Floor Space", "price": "Cat trees & wall shelves · $25–90", "query": "cat wall shelves furniture small apartment" },
-            { "image": "pet-04.png", "title": "The Fountain My Cats Actually Drink From", "price": "Stainless automatic fountains · $30–55", "query": "stainless steel automatic cat water fountain" },
-            { "image": "pet-05.png", "title": "5 Enrichment Toys That Survive a Destructive Chewer", "price": "Calming beds & chew toys · $25–50", "query": "indestructible dog toys aggressive chewer" }
+            {
+              "image": "pet-01.png",
+              "title": "The $30 Fix for a Bored Indoor Cat",
+              "price": "Snuffle mats & puzzle feeders · $18–35",
+              "query": "snuffle mat puzzle feeder cat"
+            },
+            {
+              "image": "pet-02.png",
+              "title": "Snuffle Mat: Why Every Anxious Dog Needs One",
+              "price": "Lick mats & slow feeders · $10–20",
+              "query": "snuffle mat for anxious dog"
+            },
+            {
+              "image": "pet-03.png",
+              "title": "Cat Wall Shelves for Apartments With No Floor Space",
+              "price": "Cat trees & wall shelves · $25–90",
+              "query": "cat wall shelves furniture small apartment"
+            },
+            {
+              "image": "pet-04.png",
+              "title": "The Fountain My Cats Actually Drink From",
+              "price": "Stainless automatic fountains · $30–55",
+              "query": "stainless steel automatic cat water fountain"
+            },
+            {
+              "image": "pet-05.png",
+              "title": "5 Enrichment Toys That Survive a Destructive Chewer",
+              "price": "Calming beds & chew toys · $25–50",
+              "query": "indestructible dog toys aggressive chewer"
+            }
           ]
         }
       ]
@@ -63,7 +125,13 @@
       "slug": "kitchen-air-fryer",
       "name": "Kitchen & Air Fryer",
       "why": "air fryer drew 2,372,540 Amazon searches in a single month — one of the largest query volumes of any non-beauty product we looked at — with 2.33 million units and $236.9M across the top 50 over twelve months. Kitchen & dining is also the only tracked category where the average price is falling, which means demand is deal-led right now.",
-      "keywords": ["air fryer recipes for beginners", "best air fryer for family of 4", "glass meal prep containers", "amazon kitchen must haves", "small kitchen appliances under $100"],
+      "keywords": [
+        "air fryer recipes for beginners",
+        "best air fryer for family of 4",
+        "glass meal prep containers",
+        "amazon kitchen must haves",
+        "small kitchen appliances under $100"
+      ],
       "posts": [
         {
           "date": "21 October 2026",
@@ -76,11 +144,36 @@
             "The one thing worth spending on beyond the fryer is glass storage. If you are cooking for the week, the containers you portion into decide whether leftovers get eaten. A $30 glass set at $25–45 has a better return than any single-purpose gadget."
           ],
           "pins": [
-            { "image": "kitchen-01.png", "title": "20-Minute Weeknight Dinners (Air Fryer Only)", "price": "5–6 qt air fryers · $70–120", "query": "air fryer 6 quart family" },
-            { "image": "kitchen-02.png", "title": "Glass Meal Prep Containers I Use Every Single Day", "price": "Glass storage sets · $25–45", "query": "glass meal prep containers set" },
-            { "image": "kitchen-03.png", "title": "Air Fryer Accessories Worth Buying (and 3 That Aren't)", "price": "Liners & inserts · $10–20", "query": "air fryer accessories liners silicone" },
-            { "image": "kitchen-04.png", "title": "Small Kitchen Appliances Under $100 That Earn Their Space", "price": "Immersion blenders & choppers · $30–60", "query": "immersion blender mini food chopper" },
-            { "image": "kitchen-05.png", "title": "Ceramic Nonstick That Survived My Family", "price": "Cookware sets · $60–150", "query": "ceramic nonstick cookware set" }
+            {
+              "image": "kitchen-01.png",
+              "title": "20-Minute Weeknight Dinners (Air Fryer Only)",
+              "price": "5–6 qt air fryers · $70–120",
+              "query": "air fryer 6 quart family"
+            },
+            {
+              "image": "kitchen-02.png",
+              "title": "Glass Meal Prep Containers I Use Every Single Day",
+              "price": "Glass storage sets · $25–45",
+              "query": "glass meal prep containers set"
+            },
+            {
+              "image": "kitchen-03.png",
+              "title": "Air Fryer Accessories Worth Buying (and 3 That Aren't)",
+              "price": "Liners & inserts · $10–20",
+              "query": "air fryer accessories liners silicone"
+            },
+            {
+              "image": "kitchen-04.png",
+              "title": "Small Kitchen Appliances Under $100 That Earn Their Space",
+              "price": "Immersion blenders & choppers · $30–60",
+              "query": "immersion blender mini food chopper"
+            },
+            {
+              "image": "kitchen-05.png",
+              "title": "Ceramic Nonstick That Survived My Family",
+              "price": "Cookware sets · $60–150",
+              "query": "ceramic nonstick cookware set"
+            }
           ]
         }
       ]
@@ -89,7 +182,13 @@
       "slug": "home-fitness",
       "name": "Walking Pads & Home Fitness",
       "why": "walking-pad units rose 14% month on month in July and sit 661.9% above August 2025 — 317,850 units and $58.4M over twelve months at an average of $154.83. But keyword searches fell 6.9% in the same month, so this is discount-led volume rather than fresh demand.",
-      "keywords": ["walking pad for small apartment", "under desk treadmill worth it", "cozy cardio at home", "walking pad with incline", "small space home gym"],
+      "keywords": [
+        "walking pad for small apartment",
+        "under desk treadmill worth it",
+        "cozy cardio at home",
+        "walking pad with incline",
+        "small space home gym"
+      ],
       "posts": [
         {
           "date": "21 October 2026",
@@ -102,11 +201,36 @@
             "The thing that decides whether a walking pad survives past January is not the pad, it is the setup: an anti-fatigue mat underneath cuts the noise and the vibration through the floor, and a standing desk height that lets you walk without looking down. Budget $30–60 for the mat and treat it as part of the purchase."
           ],
           "pins": [
-            { "image": "fitness-01.png", "title": "10,000 Steps Without Leaving the House", "price": "Foldable walking pads · $90–180", "query": "walking pad treadmill under desk" },
-            { "image": "fitness-02.png", "title": "Walking Pad in a Small Apartment: What I Learned", "price": "Anti-fatigue mats · $30–60", "query": "anti fatigue standing mat" },
-            { "image": "fitness-03.png", "title": "Cozy Cardio: The Gym-Free Routine That Stuck", "price": "Pilates rings & thick mats · $20–40", "query": "pilates ring thick yoga mat" },
-            { "image": "fitness-04.png", "title": "Walking Pad With Incline vs Flat — Worth the Extra $100?", "price": "Incline pads · $150–330", "query": "walking pad with incline handle bar" },
-            { "image": "fitness-05.png", "title": "A Home Gym That Fits in One Cupboard", "price": "Dumbbells & bands · $30–120", "query": "adjustable dumbbells resistance bands set" }
+            {
+              "image": "fitness-01.png",
+              "title": "10,000 Steps Without Leaving the House",
+              "price": "Foldable walking pads · $90–180",
+              "query": "walking pad treadmill under desk"
+            },
+            {
+              "image": "fitness-02.png",
+              "title": "Walking Pad in a Small Apartment: What I Learned",
+              "price": "Anti-fatigue mats · $30–60",
+              "query": "anti fatigue standing mat"
+            },
+            {
+              "image": "fitness-03.png",
+              "title": "Cozy Cardio: The Gym-Free Routine That Stuck",
+              "price": "Pilates rings & thick mats · $20–40",
+              "query": "pilates ring thick yoga mat"
+            },
+            {
+              "image": "fitness-04.png",
+              "title": "Walking Pad With Incline vs Flat — Worth the Extra $100?",
+              "price": "Incline pads · $150–330",
+              "query": "walking pad with incline handle bar"
+            },
+            {
+              "image": "fitness-05.png",
+              "title": "A Home Gym That Fits in One Cupboard",
+              "price": "Dumbbells & bands · $30–120",
+              "query": "adjustable dumbbells resistance bands set"
+            }
           ]
         }
       ]
@@ -115,7 +239,13 @@
       "slug": "sleep-comfort",
       "name": "Sleep & Bedroom Comfort",
       "why": "mattress toppers moved 2,503,800 units and $102.8M over twelve months, up 21.1% year on year, with 666,121 searches in July alone (+8.9% month on month). Bedroom furniture is the fastest-growing pocket inside home and kitchen at +28%. The hook is consistent: hot sleeper, or back pain.",
-      "keywords": ["mattress topper for back pain", "cooling mattress topper for hot sleepers", "blackout curtains for bedroom", "best pillow for neck pain", "dorm room bedding"],
+      "keywords": [
+        "mattress topper for back pain",
+        "cooling mattress topper for hot sleepers",
+        "blackout curtains for bedroom",
+        "best pillow for neck pain",
+        "dorm room bedding"
+      ],
       "posts": [
         {
           "date": "21 October 2026",
@@ -128,14 +258,40 @@
             "Two additions that consistently earn their place: blackout curtains at $20–45, which do more for sleep timing than any supplement, and a white-noise machine at $25–55, which is the only reliable fix for a partner who gets up earlier than you."
           ],
           "pins": [
-            { "image": "sleep-01.png", "title": "The $50 Fix for a $1,000 Mattress Problem", "price": "Mattress toppers · $40–90", "query": "mattress topper back pain" },
-            { "image": "sleep-02.png", "title": "Cooling Topper for Hot Sleepers — Does It Actually Work?", "price": "Cooling gel & bamboo toppers · $40–90", "query": "cooling mattress topper hot sleepers" },
-            { "image": "sleep-03.png", "title": "Blackout Curtains That Actually Block Light", "price": "Blackout curtains · $20–45", "query": "blackout curtains bedroom 100 percent" },
-            { "image": "sleep-04.png", "title": "Best Pillow for Neck Pain (I Tried Six)", "price": "Memory-foam pillows · $25–60", "query": "best pillow neck pain side sleeper" },
-            { "image": "sleep-05.png", "title": "Sleep Like a Hotel Room for Under $100", "price": "Bamboo sheet sets · $35–80", "query": "cooling bamboo sheets set" }
+            {
+              "image": "sleep-01.png",
+              "title": "The $50 Fix for a $1,000 Mattress Problem",
+              "price": "Mattress toppers · $40–90",
+              "query": "mattress topper back pain"
+            },
+            {
+              "image": "sleep-02.png",
+              "title": "Cooling Topper for Hot Sleepers — Does It Actually Work?",
+              "price": "Cooling gel & bamboo toppers · $40–90",
+              "query": "cooling mattress topper hot sleepers"
+            },
+            {
+              "image": "sleep-03.png",
+              "title": "Blackout Curtains That Actually Block Light",
+              "price": "Blackout curtains · $20–45",
+              "query": "blackout curtains bedroom 100 percent"
+            },
+            {
+              "image": "sleep-04.png",
+              "title": "Best Pillow for Neck Pain (I Tried Six)",
+              "price": "Memory-foam pillows · $25–60",
+              "query": "best pillow neck pain side sleeper"
+            },
+            {
+              "image": "sleep-05.png",
+              "title": "Sleep Like a Hotel Room for Under $100",
+              "price": "Bamboo sheet sets · $35–80",
+              "query": "cooling bamboo sheets set"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "site_url": "https://nookandproper.vercel.app/"
 }
