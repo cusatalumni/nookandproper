@@ -311,5 +311,9 @@
       "tag": "gifthouse-21",
       "label": "United Arab Emirates"
     }
-  }
+  },
+  "verify_meta": [
+    "<meta name=\"p:domain_verify\" content=\"ad9ac924fb2a3957be3dbaeee1416434\"/>"
+  ],
+  "short_domain_token": "ad9ac924fb2a3957be3dbaeee1416434"
 }

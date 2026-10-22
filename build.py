@@ -139,6 +139,7 @@ footer.site a:hover{color:var(--accent)}
 
 def layout(site, title, body, canonical="", active="", og_image=""):
     regions_js = json.dumps(site.get("regions", {}))
+    verify_meta = "\n".join(site.get("verify_meta", []))
     nav = "".join(
         f'<a href="/category/{c['slug']}" class="{"on" if active == c["slug"] else ""}">'
         f'{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>'
@@ -159,6 +160,7 @@ def layout(site, title, body, canonical="", active="", og_image=""):
 <meta property="og:image:height" content="1500">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="{esc(site.get('site_url','').rstrip('/') + canonical)}">
+{verify_meta}
 <style>{CSS}</style>
 <script>window.NP_REGIONS = {regions_js};
 window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
@@ -399,6 +401,15 @@ def main():
         os.makedirs(os.path.dirname(path) or OUT, exist_ok=True)
         open(path, "w").write(html)
         written.append(rel)
+
+    # domain-verification files (Pinterest, Google, etc.) must sit at the site root
+    verify_dir = os.path.join(BASE, "content", "verify")
+    if os.path.isdir(verify_dir):
+        import shutil as _sh
+        for fn in os.listdir(verify_dir):
+            src = os.path.join(verify_dir, fn)
+            if os.path.isfile(src) and not fn.startswith(("_", ".")):
+                _sh.copy2(src, os.path.join(OUT, fn))
 
     # static assets the pages need (fonts are build-only, not served)
     import shutil
