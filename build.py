@@ -18,6 +18,7 @@ QUEUE = os.path.join(BASE, "content", "queue.json")
 FEED = os.path.join(BASE, "content", "feed.json")
 OUT = os.path.join(BASE, "out")
 PER_HOME = 4
+PER_PAGE = 12
 
 CAT_LABEL = {"home-organization": "Home Organisation", "pet-enrichment": "Pet Enrichment",
              "kitchen-air-fryer": "Kitchen & Air Fryer", "home-fitness": "Home Fitness",
@@ -200,8 +201,10 @@ def render_home(site):
     return "".join(out)
 
 
-def render_category(site, c):
-    posts = [p for p in site["_posts"] if p["cat"] == c["slug"]]
+def render_category(site, c, page=1):
+    allp = [p for p in site["_posts"] if p["cat"] == c["slug"]]
+    pages = max(1, -(-len(allp) // PER_PAGE))
+    posts = allp[(page - 1) * PER_PAGE: page * PER_PAGE]
     label = CAT_LABEL.get(c["slug"], c["name"])
     pillar = c["posts"][0] if c.get("posts") else None
     body = [f"""<div class="wrap">
@@ -216,6 +219,12 @@ def render_category(site, c):
             body.append(f"<p>{esc(para)}</p>")
     if posts:
         body.append(f'<div class="grid" style="margin-top:28px">{"".join(card(p) for p in posts)}</div>')
+    if pages > 1:
+        links = []
+        for n in range(1, pages + 1):
+            href = f"/category/{c['slug']}.html" if n == 1 else f"/category/{c['slug']}/page-{n}.html"
+            links.append(f'<a class="pg{" on" if n == page else ""}" href="{href}">{n}</a>')
+        body.append(f'<nav class="pager">{"".join(links)}</nav>')
     if c.get("keywords"):
         body.append(f'<p class="small" style="margin-top:22px">Search: {esc(" · ".join(c["keywords"]))}</p>')
     body.append('</article></div>')
@@ -339,7 +348,19 @@ def render_legal(site, key):
            f'<p class="meta">Last updated {date.today().isoformat()}</p>{body}</article></div>'
 
 
+def clean_out():
+    """Drop stale pages so renamed or removed posts never leave orphans. Keeps pins/."""
+    import shutil
+    for name in os.listdir(OUT):
+        if name == "pins":
+            continue
+        path = os.path.join(OUT, name)
+        shutil.rmtree(path) if os.path.isdir(path) else os.remove(path)
+
+
 def main():
+    os.makedirs(OUT, exist_ok=True)
+    clean_out()
     site = load()
     site["updated"] = date.today().isoformat()
     written = []
@@ -352,14 +373,22 @@ def main():
 
     write("index.html", layout(site, f"{site['brand']} — {site.get('tagline','')}",
                                render_home(site), "/index.html"))
+    urls = ["/index.html", "/about.html", "/affiliate-disclosure.html", "/privacy.html", "/terms.html"]
     for c in site["categories"]:
-        write(f"category/{c['slug']}.html",
-              layout(site, f"{CAT_LABEL.get(c['slug'], c['name'])} — {site['brand']}",
-                     render_category(site, c), f"/category/{c['slug']}.html", active=c["slug"]))
+        n = max(1, -(-len([p for p in site["_posts"] if p["cat"] == c["slug"]]) // PER_PAGE))
+        for pg in range(1, n + 1):
+            rel = (f"category/{c['slug']}.html" if pg == 1
+                   else f"category/{c['slug']}/page-{pg}.html")
+            ttl = CAT_LABEL.get(c["slug"], c["name"]) + ("" if pg == 1 else f" — page {pg}")
+            write(rel, layout(site, f"{ttl} — {site['brand']}",
+                              render_category(site, c, pg), f"/{rel}", active=c["slug"]))
+            urls.append("/" + rel)
     for p in site["_posts"]:
-        write(f"p/{p['slug']}.html",
-              layout(site, f"{p['title']} — {site['brand']}", render_post(site, p),
-                     f"/p/{p['slug']}.html", active=p["cat"]))
+        rel = f"p/{p['slug']}.html"
+        write(rel, layout(site, f"{p['title']} — {site['brand']}", render_post(site, p),
+                          f"/{rel}", active=p["cat"]))
+        urls.append(f"/p/{p['slug']}.html")
+
     for key in LEGAL:
         write(f"{key}.html", layout(site, f"{LEGAL[key][0]} — {site['brand']}",
                                     render_legal(site, key), f"/{key}.html"))
@@ -374,6 +403,16 @@ def main():
         lines.append(f"  - Destination: {site.get('site_url','').rstrip('/')}/p/{p['slug']}.html")
         lines.append(f"  - Goes to Amazon: {p['link']}")
     open(os.path.join(BASE, "pin-destinations.md"), "w").write("\n".join(lines) + "\n")
+
+    base = site.get("site_url", "").rstrip("/")
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u in urls:
+        sm.append(f"  <url><loc>{esc(base + u)}</loc><lastmod>{date.today().isoformat()}</lastmod></url>")
+    sm.append("</urlset>")
+    open(os.path.join(OUT, "sitemap.xml"), "w").write("\n".join(sm))
+    open(os.path.join(OUT, "robots.txt"), "w").write(
+        f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
 
     print(f"wrote {len(written)} pages · {len(site['_posts'])} posts · "
           f"{len(site['categories'])} categories")
