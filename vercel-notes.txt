@@ -1,0 +1,6 @@
+Vercel settings that matter:
+- Framework Preset: Other
+- Build Command: (empty)  <- do NOT add one; out/ is committed
+- Output Directory: out
+- Install Command: (empty)
+- Node version: irrelevant, there is no build step
