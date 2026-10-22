@@ -1,231 +1,382 @@
 #!/usr/bin/env python3
-"""Build the pin-blog site from content/site.json into a single self-contained HTML page.
+"""Render the Nook & Proper static site:
 
-Affiliate links are generated from the Amazon Associates tag in site.json.
-We use keyword search URLs (tag-safe, no invented ASINs). Swap `asin` in a pin
-to emit a /dp/ product link instead.
+    out/index.html                     home — 4 newest per category, links out
+    out/category/<slug>.html           full category feed + the category article
+    out/p/<slug>.html                  one page per pin (the Pinterest destination)
+    out/about.html etc.               policy / about pages
+    out/pins/*.png                     the pin images
 """
 import json
 import os
-import sys
+import re
 from datetime import date
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(BASE, "content", "site.json")
 QUEUE = os.path.join(BASE, "content", "queue.json")
-OUT = os.path.join(BASE, "out", "index.html")
+FEED = os.path.join(BASE, "content", "feed.json")
+OUT = os.path.join(BASE, "out")
+PER_HOME = 4
 
-
-def load():
-    with open(SITE) as f:
-        site = json.load(f)
-    if os.path.exists(QUEUE):
-        with open(QUEUE) as f:
-            site["_queue"] = json.load(f)
-    feed_path = os.path.join(BASE, "content", "feed.json")
-    if os.path.exists(feed_path):
-        with open(feed_path) as f:
-            site["_feed"] = json.load(f)
-    return site
-
-
-def cat_pins(site, slug):
-    """Pins come from the queue: rendered ones show, the rest are listed as upcoming."""
-    q = site.get("_queue") or {}
-    feed_pins = {f.get("pin") for f in site.get("_feed", [])}
-    items = [i for i in q.get("items", []) if i.get("cat") == slug
-             and i.get("pin") not in feed_pins]
-    done = [i for i in items
-            if i.get("status") == "rendered" and i.get("pin")
-            and os.path.exists(os.path.join(BASE, "pins", i["pin"]))]
-    todo = [i for i in items if i.get("status", "queued") == "queued"]
-    return done, todo
-
-
-def affiliate(site, pin):
-    tag = site["tag"]
-    if pin.get("asin"):
-        return f"https://www.amazon.com/dp/{pin['asin']}?tag={tag}"
-    q = pin.get("query") or pin["title"]
-    from urllib.parse import quote_plus
-    return f"https://www.amazon.com/s?k={quote_plus(q)}&tag={tag}"
+CAT_LABEL = {"home-organization": "Home Organisation", "pet-enrichment": "Pet Enrichment",
+             "kitchen-air-fryer": "Kitchen & Air Fryer", "home-fitness": "Home Fitness",
+             "sleep-comfort": "Sleep & Comfort"}
 
 
 def esc(s):
-    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-             .replace('"', "&quot;"))
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;"))
+
+
+def slugify(s, maxlen=70):
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
+    return s[:maxlen].rstrip("-")
+
+
+def load():
+    site = json.load(open(SITE))
+    site["_queue"] = json.load(open(QUEUE)) if os.path.exists(QUEUE) else {"items": []}
+    site["_feed"] = json.load(open(FEED)) if os.path.exists(FEED) else []
+    # one canonical post record per pin
+    posts = []
+    for f in site["_feed"]:
+        pid = re.search(r"([a-z]+-\d+)", f.get("pin", ""))
+        pid = pid.group(1) if pid else ""
+        posts.append({
+            "cat": f["cat"], "cat_label": CAT_LABEL.get(f["cat"], f["cat"]),
+            "title": f["title"], "body": f["body"], "date": f.get("date", ""),
+            "pin": f.get("pin", ""), "link": f.get("link", ""),
+            "price": f.get("price", ""), "id": pid,
+            "slug": slugify(f["title"]),
+        })
+    site["_posts"] = posts
+    return site
 
 
 CSS = """
-:root{
-  --cream:#faf6f0; --ink:#241f1b; --muted:#6d635a;
-  --accent:#a8593c; --line:#e6dcd0; --card:#fffdfa;
-}
+:root{--cream:#faf6f0;--ink:#241f1b;--muted:#6d635a;--accent:#a8593c;--line:#e6dcd0;--card:#fffdfa}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);
+body{margin:0;background:var(--cream);color:var(--ink);line-height:1.65;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  line-height:1.65;-webkit-font-smoothing:antialiased}
+  -webkit-font-smoothing:antialiased}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 a{color:var(--accent)}
-header.site{border-bottom:1px solid var(--line);background:var(--card)}
+header.site{border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:9}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;
-  padding:22px 24px;flex-wrap:wrap;gap:10px}
-.brand{font-family:Georgia,"Times New Roman",serif;font-size:23px;letter-spacing:.2px;margin:0;font-weight:600}
+  padding:18px 24px;flex-wrap:wrap;gap:12px}
+.brand{font-family:Georgia,"Times New Roman",serif;font-size:22px;margin:0;font-weight:600;
+  text-decoration:none;color:var(--ink);letter-spacing:-.2px}
 .brand span{color:var(--accent)}
-nav.top{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.hero{padding:64px 0 44px;text-align:center}
-.hero h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,50px);line-height:1.15;
-  margin:0 0 16px;font-weight:600;letter-spacing:-.5px}
-.hero p{color:var(--muted);max-width:640px;margin:0 auto;font-size:17px}
-.rule{width:56px;height:3px;background:var(--accent);margin:26px auto 0}
-.toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:0 0 56px}
-.toc a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
-  border:1px solid var(--line);border-radius:999px;padding:8px 16px;color:var(--muted);
-  background:var(--card)}
-.toc a:hover{border-color:var(--accent);color:var(--accent)}
-article.post{padding:48px 0;border-top:1px solid var(--line)}
+nav.main{display:flex;gap:20px;flex-wrap:wrap}
+nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+  color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
+nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.hero{padding:58px 0 34px;text-align:center}
+.hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
+  font-weight:600;letter-spacing:-.5px}
+.hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:17px}
+.rule{width:54px;height:3px;background:var(--accent);margin:24px auto 0}
+.section{padding:34px 0 10px;border-top:1px solid var(--line)}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  margin-bottom:18px;flex-wrap:wrap}
+.section-head h2{font-family:Georgia,serif;font-size:clamp(21px,3vw,27px);margin:0;font-weight:600}
+.section-head a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
+.card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
+.card .cap{padding:11px 13px 14px}
+.card .cap b{display:block;font-size:13.5px;line-height:1.35;font-weight:600}
+.card .cap small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.article{padding:44px 0;border-top:1px solid var(--line)}
 .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
   margin:0 0 10px;font-weight:600}
-article.post h2{font-family:Georgia,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.25;
+.article h1,.article h2{font-family:Georgia,serif;font-size:clamp(25px,3.6vw,36px);line-height:1.22;
   margin:0 0 8px;font-weight:600}
-.meta{font-size:13px;color:var(--muted);margin:0 0 22px}
+.meta{font-size:13px;color:var(--muted);margin:0 0 20px}
 .lede{font-size:18px;color:#3c342d;margin:0 0 18px}
-article.post p{margin:0 0 16px}
-.why{background:var(--card);border-left:3px solid var(--accent);padding:16px 20px;
-  margin:0 0 26px;font-size:15px;color:#4a4139}
-.why b{color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;
-  margin:26px 0 10px}
-.pin{display:block;text-decoration:none;color:inherit;background:var(--card);
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
-.pin:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
-.pin img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
-.ph{aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:space-between;
-  padding:20px 18px 18px;background:linear-gradient(160deg,#f3e9dc 0%,#e9dccb 55%,#dfcdb6 100%);
-  position:relative;overflow:hidden}
-.ph:after{content:"";position:absolute;inset:11px;border:1px solid rgba(140,100,70,.22);border-radius:7px;pointer-events:none}
-.ph .k{font-size:9.5px;letter-spacing:.19em;text-transform:uppercase;color:#9c6a4c;font-weight:700}
-.ph .t{font-family:Georgia,serif;font-size:17px;line-height:1.3;color:#2b231d;font-weight:600;
-  text-align:center;align-self:center;padding:0 4px}
-.ph .f{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8a7563;text-align:center}
-.pin .cap{padding:12px 14px 15px}
-.pin .cap b{display:block;font-size:14px;line-height:1.35;font-weight:600}
-.pin .cap small{display:block;color:var(--muted);font-size:12px;margin-top:5px}
-.tag-list{font-size:13px;color:var(--muted);margin:14px 0 0}
-footer.site{border-top:1px solid var(--line);padding:36px 0 56px;margin-top:32px;
-  font-size:12.5px;color:var(--muted);line-height:1.7}
-footer.site .wrap{max-width:760px}
+.why{background:var(--card);border-left:3px solid var(--accent);padding:15px 19px;margin:0 0 24px;
+  font-size:14.5px;color:#4a4139}
+.postwrap{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:36px;align-items:start}
+.postwrap img{width:100%;border-radius:14px;border:1px solid var(--line);display:block}
+.buy{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:700;font-size:16px;padding:16px 30px;border-radius:44px;margin:8px 0 6px}
+.buy:hover{filter:brightness(1.08)}
+.small{font-size:12.5px;color:var(--muted)}
 .disclosure{background:var(--card);border:1px solid var(--line);border-radius:10px;
-  padding:14px 16px;margin-bottom:18px}
-@media(max-width:560px){.hero{padding:44px 0 32px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  article.post{padding:36px 0}.pin .cap{padding:9px 10px 12px}.pin .cap b{font-size:12px}}
+  padding:13px 16px;margin:18px 0;font-size:13px;color:var(--muted)}
+footer.site{border-top:1px solid var(--line);padding:36px 0 54px;margin-top:34px;font-size:13px;
+  color:var(--muted)}
+footer.site .cols{display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between}
+footer.site h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;
+  color:var(--ink)}
+footer.site a{display:block;text-decoration:none;color:var(--muted);padding:3px 0;font-size:13px}
+footer.site a:hover{color:var(--accent)}
+.footnote{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:12px}
+.legal{padding:40px 0;max-width:760px}
+.legal h1{font-family:Georgia,serif;font-size:clamp(25px,3.4vw,34px);margin:0 0 6px}
+.legal h2{font-family:Georgia,serif;font-size:20px;margin:26px 0 8px}
+.legal p,.legal li{font-size:15.5px;color:#3c342d}
+@media(max-width:720px){.postwrap{grid-template-columns:1fr;gap:22px}.grid{
+  grid-template-columns:repeat(2,1fr);gap:12px}.hero{padding:38px 0 24px}}
 """
 
 
-def render(site):
-    cats = site["categories"]
-    out = []
-    out.append(f"""<!DOCTYPE html>
+def layout(site, title, body, canonical="", active=""):
+    nav = "".join(
+        f'<a href="/category/{c["slug"]}.html" class="{"on" if active == c["slug"] else ""}">'
+        f'{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>'
+        for c in site["categories"])
+    year = date.today().year
+    return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(site['brand'])} — {esc(site.get('tagline','Trending finds, pinned daily'))}</title>
+<title>{esc(title)}</title>
 <meta name="description" content="{esc(site.get('description',''))}">
-<meta property="og:title" content="{esc(site['brand'])} — {esc(site.get('tagline',''))}">
-<meta property="og:description" content="{esc(site.get('description',''))}">
+<meta property="og:title" content="{esc(title)}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{esc(site.get('site_url',''))}">
+<meta property="og:url" content="{esc(site.get('site_url',''))}{esc(canonical)}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="{esc(site.get('site_url',''))}">
+<link rel="canonical" href="{esc(site.get('site_url',''))}{esc(canonical)}">
 <style>{CSS}</style>
 </head>
 <body>
 <header class="site"><div class="wrap">
-  <p class="brand">{esc(site['brand'].split(' ')[0])} <span>{esc(' '.join(site['brand'].split(' ')[1:]))}</span></p>
-  <nav class="top">Updated {esc(site.get('updated',''))}</nav>
+  <a class="brand" href="/index.html">{esc(site['brand'].split(' ')[0])} <span>{esc(' '.join(site['brand'].split(' ')[1:]))}</span></a>
+  <nav class="main">{nav}</nav>
 </div></header>
-
-<div class="wrap">
-  <section class="hero">
-    <h1>{esc(site.get('headline',''))}</h1>
-    <p>{esc(site.get('subhead',''))}</p>
-    <div class="rule"></div>
-  </section>
-  <div class="toc">""")
-
-    for c in cats:
-        out.append(f'<a href="#{esc(c["slug"])}">{esc(c["name"])}</a>')
-    out.append("</div>")
-
-    feed = site.get("_feed", [])
-    for c in cats:
-        daily = [p for p in feed if p.get("cat") == c["slug"]]
-        if daily:
-            out.append(f'  <article class="post" id="{esc(c["slug"])}">')
-            out.append(f'    <p class="kicker">{esc(c["name"])} · Daily picks</p>')
-            out.append("    <div class=\"grid\">")
-            for p in daily[:12]:
-                href = p.get("link") or affiliate(site, p)
-                out.append(f"""      <a class="pin" href="{esc(href)}" target="_blank" rel="nofollow sponsored noopener">
-        <img src="pins/{esc(p['pin'])}" alt="{esc(p['title'])}" loading="lazy">
-        <div class="cap"><b>{esc(p['title'])}</b><small>{esc(p.get('price',''))}</small></div>
-      </a>""")
-            out.append("    </div>")
-            for p in daily[:12]:
-                out.append(f"    <h3 style=\"font-family:Georgia,serif;font-size:20px;margin:26px 0 6px\">{esc(p['title'])}</h3>")
-                out.append(f"    <p class=\"meta\">{esc(p.get('date',''))}</p>")
-                out.append(f"    <p>{esc(p['body'])}</p>")
-            out.append("  </article>")
-        for post in c["posts"]:
-            out.append(f"""
-  <article class="post" id="{esc(c['slug'])}">
-    <p class="kicker">{esc(c['name'])}</p>
-    <h2>{esc(post['title'])}</h2>
-    <p class="meta">{esc(post['date'])} · {len(post['pins'])} pins</p>
-    <p class="lede">{esc(post['lede'])}</p>
-    <div class="why"><b>Why it's trending:</b> {esc(c.get('why',''))}</div>""")
-            for para in post.get("body", []):
-                out.append(f"    <p>{esc(para)}</p>")
-            done, todo = cat_pins(site, c["slug"])
-            if done:
-                out.append('    <div class="grid">')
-                for p in done:
-                    href = p.get("link") or affiliate(site, p)
-                    out.append(f"""      <a class="pin" href="{esc(href)}" target="_blank" rel="nofollow sponsored noopener">
-        <img src="pins/{esc(p['pin'])}" alt="{esc(p['headline'])}" loading="lazy">
-        <div class="cap"><b>{esc(p['headline'])}</b><small>{esc(p.get('price',''))}</small></div>
-      </a>""")
-                out.append("    </div>")
-            if todo:
-                out.append('    <p class="tag-list"><b>Next up in this category:</b> '
-                           + esc(" · ".join(t["headline"] for t in todo[:4])) + "</p>")
-            if c.get("keywords"):
-                out.append(f'    <p class="tag-list">Search: {esc(" · ".join(c["keywords"]))}</p>')
-            out.append("  </article>")
-
-    out.append(f"""
-</div>
+{body}
 <footer class="site"><div class="wrap">
-  <div class="disclosure"><b>Affiliate disclosure.</b> {esc(site['brand'])} is a participant in the Amazon
-  Services LLC Associates Program. As an Amazon Associate we earn from qualifying purchases.
-  Prices and availability are accurate as of the date shown and are subject to change.</div>
-  <p>© {date.today().year} {esc(site['brand'])}. Pins updated daily.</p>
+  <div class="cols">
+    <div><h4>Categories</h4>
+      {"".join(f'<a href="/category/{c["slug"]}.html">{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>' for c in site["categories"])}
+    </div>
+    <div><h4>{esc(site['brand'])}</h4>
+      <a href="/about.html">About us</a>
+      <a href="/affiliate-disclosure.html">Affiliate disclosure</a>
+      <a href="/privacy.html">Privacy policy</a>
+      <a href="/terms.html">Terms of use</a>
+    </div>
+  </div>
+  <div class="footnote">
+    <p>{esc(site['brand'])} is a participant in the Amazon Services LLC Associates Program, an affiliate
+    advertising program designed to provide a means for sites to earn advertising fees by advertising and
+    linking to Amazon.com. As an Amazon Associate we earn from qualifying purchases. Prices and availability
+    are accurate as of the date shown and are subject to change.</p>
+    <p>© {year} {esc(site['brand'])}. All rights reserved.</p>
+  </div>
 </div></footer>
 </body>
-</html>""")
-    return "\n".join(out)
+</html>"""
+
+
+def card(p):
+    return (f'<a class="card" href="/p/{esc(p["slug"])}.html">'
+            f'<img src="/pins/{esc(p["pin"])}" alt="{esc(p["title"])}" loading="lazy">'
+            f'<div class="cap"><b>{esc(p["title"])}</b><small>{esc(p["price"])}</small></div></a>')
+
+
+def render_home(site):
+    posts = site["_posts"]
+    out = [f"""<div class="wrap"><section class="hero">
+  <h1>{esc(site.get('headline',''))}</h1>
+  <p>{esc(site.get('subhead',''))}</p><div class="rule"></div>
+</section>"""]
+    for c in site["categories"]:
+        mine = [p for p in posts if p["cat"] == c["slug"]]
+        if not mine:
+            continue
+        label = CAT_LABEL.get(c["slug"], c["name"])
+        out.append(f"""<section class="section">
+  <div class="section-head"><h2>{esc(label)}</h2>
+  <a href="/category/{esc(c['slug'])}.html">All {len(mine)} in {esc(label)} &rarr;</a></div>
+  <div class="grid">{''.join(card(p) for p in mine[:PER_HOME])}</div>
+</section>""")
+    out.append("</div>")
+    return "".join(out)
+
+
+def render_category(site, c):
+    posts = [p for p in site["_posts"] if p["cat"] == c["slug"]]
+    label = CAT_LABEL.get(c["slug"], c["name"])
+    pillar = c["posts"][0] if c.get("posts") else None
+    body = [f"""<div class="wrap">
+<article class="article">
+  <p class="kicker">{esc(label)}</p>
+  <h1>{esc(pillar['title'] if pillar else label)}</h1>"""]
+    if pillar:
+        body.append(f'<p class="meta">{esc(pillar["date"])} · {len(posts)} picks</p>')
+        body.append(f'<p class="lede">{esc(pillar["lede"])}</p>')
+        body.append(f'<div class="why"><b>Why this category:</b> {esc(c.get("why",""))}</div>')
+        for para in pillar.get("body", []):
+            body.append(f"<p>{esc(para)}</p>")
+    if posts:
+        body.append(f'<div class="grid" style="margin-top:28px">{"".join(card(p) for p in posts)}</div>')
+    if c.get("keywords"):
+        body.append(f'<p class="small" style="margin-top:22px">Search: {esc(" · ".join(c["keywords"]))}</p>')
+    body.append('</article></div>')
+    return "".join(body)
+
+
+def render_post(site, p):
+    related = [x for x in site["_posts"] if x["cat"] == p["cat"] and x["slug"] != p["slug"]][:4]
+    body = f"""<div class="wrap"><article class="article">
+  <p class="kicker">{esc(p['cat_label'])}</p>
+  <div class="postwrap">
+    <div><img src="/pins/{esc(p['pin'])}" alt="{esc(p['title'])}"></div>
+    <div>
+      <h1>{esc(p['title'])}</h1>
+      <p class="meta">{esc(p['date'])}{(' · ' + esc(p['price'])) if p['price'] else ''}</p>
+      <p>{esc(p['body'])}</p>
+      <p><a class="buy" href="{esc(p['link'])}" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a></p>
+      <p class="small">Opens the listing on Amazon.com. Price shown is the usual street price for this
+      kind of product, not a live quote — check the listing for the current figure.</p>
+      <div class="disclosure"><b>Affiliate disclosure.</b> We earn a commission from qualifying purchases
+      made through this link, at no extra cost to you. This does not affect what we recommend.</div>
+    </div>
+  </div>"""
+    if related:
+        body += (f'<section class="section"><div class="section-head"><h2>More in '
+                 f'{esc(p["cat_label"])}</h2><a href="/category/{esc(p["cat"])}.html">See all &rarr;</a></div>'
+                 f'<div class="grid">{"".join(card(r) for r in related)}</div></section>')
+    body += "</article></div>"
+    return body
+
+
+LEGAL = {
+    "about": ("About us", """
+<p>Nook &amp; Proper is a small independent edit of practical things for the home — the kind of
+purchase that makes an everyday job slightly easier rather than the kind you admire in a photograph
+and never use.</p>
+<h2>What we cover</h2>
+<p>Five categories, chosen because the sales data says people are actually buying them: home
+organisation, pet enrichment, the air-fryer kitchen, home fitness, and sleep. We deliberately do not
+cover beauty or fashion.</p>
+<h2>How we choose</h2>
+<p>We start from marketplace demand — what is genuinely selling, not what looks good on a mood board.
+Each pick then has to pass a simpler test: would we explain it to a friend without embarrassment. If a
+product only makes sense as an advert, it does not go in.</p>
+<h2>How we make money</h2>
+<p>Through affiliate commissions. If you buy through a link on this site we may earn a small
+percentage, at no extra cost to you. That is the whole business model — we do not sell your data and we
+do not take payment for a placement. See our <a href="/affiliate-disclosure.html">affiliate
+disclosure</a> for the detail.</p>
+<h2>Corrections</h2>
+<p>Prices and availability change constantly. If something here is wrong, tell us and we will fix it
+rather than quietly leave it up.</p>"""),
+
+    "affiliate-disclosure": ("Affiliate disclosure", """
+<p>Nook &amp; Proper is a participant in the Amazon Services LLC Associates Program, an affiliate
+advertising program designed to provide a means for sites to earn advertising fees by advertising and
+linking to Amazon.com.</p>
+<h2>What that means in practice</h2>
+<ul>
+<li>When you click a product link and buy something, Amazon may pay us a commission.</li>
+<li>The price you pay is exactly the same. The commission comes out of Amazon's margin, not your pocket.</li>
+<li>We are never paid to feature a specific product, and no brand can buy a place in our edit.</li>
+</ul>
+<h2>Prices</h2>
+<p>Price bands shown on this site are typical street prices for that kind of product at the time of
+writing. They are guidance, not a quote, and they change — sometimes within hours. Always check the
+figure on the Amazon listing before buying.</p>
+<h2>Trademarks</h2>
+<p>Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates. Product names,
+logos and brands are the property of their respective owners and are used here only to identify the
+products being discussed.</p>
+<h2>Images</h2>
+<p>Product photography is supplied by the retailer and is used within the terms of the affiliate
+program. The layout, typography, framing and watermark on every pin are ours.</p>"""),
+
+    "privacy": ("Privacy policy", """
+<p>This policy explains what happens to information when you visit Nook &amp; Proper. It is written to
+be read, not to be survived.</p>
+<h2>What we collect</h2>
+<p>The site itself sets no tracking cookies and asks for no personal details. There is no account, no
+comment system and no newsletter sign-up form.</p>
+<h2>Third parties</h2>
+<p>When you click a product link you leave this site for Amazon, which sets its own cookies and
+applies its own privacy policy. Amazon's affiliate programme may record that the visit came from here
+so that a commission can be attributed. We never see your name, address, payment details or what you
+bought.</p>
+<h2>Hosting</h2>
+<p>The site is served as static files by our hosting provider, which may keep standard server logs
+including IP address and browser type for security and reliability.</p>
+<h2>Your rights</h2>
+<p>Because we hold no personal data about you, there is nothing for us to export or delete. If you
+believe we hold something, contact us and we will look into it.</p>
+<h2>Changes</h2>
+<p>If this policy changes, the date at the top of the page changes with it.</p>"""),
+
+    "terms": ("Terms of use", """
+<p>By using Nook &amp; Proper you agree to the terms below. They are deliberately short.</p>
+<h2>Information, not advice</h2>
+<p>Everything here is general product commentary. It is not professional, medical, financial or safety
+advice. A mattress topper is not a treatment for a medical condition; a walking pad is not a substitute
+for medical clearance to exercise. Use your own judgement and, where it matters, a professional's.</p>
+<h2>Accuracy</h2>
+<p>We aim to be accurate and we correct mistakes when we find them, but prices, availability and
+product specifications change without notice. Always confirm details on the retailer's listing before
+buying.</p>
+<h2>Affiliate links</h2>
+<p>This site contains affiliate links. See the <a href="/affiliate-disclosure.html">affiliate
+disclosure</a>.</p>
+<h2>Liability</h2>
+<p>The site is provided as-is. To the extent permitted by law, we are not liable for losses arising
+from purchases made through third-party retailers or from reliance on what is written here.</p>
+<h2>Content</h2>
+<p>The writing, layout and pin designs are ours and may not be republished without permission. Product
+photography belongs to its respective owner.</p>"""),
+}
+
+
+def render_legal(site, key):
+    title, body = LEGAL[key]
+    return f'<div class="wrap"><article class="legal"><h1>{esc(title)}</h1>' \
+           f'<p class="meta">Last updated {date.today().isoformat()}</p>{body}</article></div>'
 
 
 def main():
     site = load()
-    site["updated"] = site.get("updated") or date.today().isoformat()
-    html = render(site)
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w") as f:
-        f.write(html)
-    total = sum(len(p["pins"]) for c in site["categories"] for p in c["posts"])
-    print(f"wrote {OUT} · {len(site['categories'])} categories · {total} pins")
+    site["updated"] = date.today().isoformat()
+    written = []
+
+    def write(rel, html):
+        path = os.path.join(OUT, rel)
+        os.makedirs(os.path.dirname(path) or OUT, exist_ok=True)
+        open(path, "w").write(html)
+        written.append(rel)
+
+    write("index.html", layout(site, f"{site['brand']} — {site.get('tagline','')}",
+                               render_home(site), "/index.html"))
+    for c in site["categories"]:
+        write(f"category/{c['slug']}.html",
+              layout(site, f"{CAT_LABEL.get(c['slug'], c['name'])} — {site['brand']}",
+                     render_category(site, c), f"/category/{c['slug']}.html", active=c["slug"]))
+    for p in site["_posts"]:
+        write(f"p/{p['slug']}.html",
+              layout(site, f"{p['title']} — {site['brand']}", render_post(site, p),
+                     f"/p/{p['slug']}.html", active=p["cat"]))
+    for key in LEGAL:
+        write(f"{key}.html", layout(site, f"{LEGAL[key][0]} — {site['brand']}",
+                                    render_legal(site, key), f"/{key}.html"))
+
+    # pin -> destination sheet for Pinterest (not served, for Manoj)
+    lines = ["# Pinterest pin destinations", "",
+             "Use the URL as the pin's destination link. The Amazon link is what the page's",
+             "button goes to — do not paste that into Pinterest.", ""]
+    for p in site["_posts"]:
+        lines.append(f"- **{p['title']}** ({p['cat_label']})")
+        lines.append(f"  - Pin image: `/pins/{p['pin']}`")
+        lines.append(f"  - Destination: {site.get('site_url','').rstrip('/')}/p/{p['slug']}.html")
+        lines.append(f"  - Goes to Amazon: {p['link']}")
+    open(os.path.join(BASE, "pin-destinations.md"), "w").write("\n".join(lines) + "\n")
+
+    print(f"wrote {len(written)} pages · {len(site['_posts'])} posts · "
+          f"{len(site['categories'])} categories")
 
 
 if __name__ == "__main__":
