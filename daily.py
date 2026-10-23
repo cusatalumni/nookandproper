@@ -157,8 +157,16 @@ def todays_pack(n=None):
     """Next N ready-but-unposted pins, marked posted so a wake never repeats one."""
     q = load()
     n = n or q.get("per_day", 3)
+    published = set()
+    feed_path = os.path.join(BASE, "content", "feed.json")
+    if os.path.exists(feed_path):
+        try:
+            published = {f.get("pin") for f in json.load(open(feed_path))}
+        except Exception:
+            published = set()
     ready = [i for i in q["items"]
-             if i.get("status") == "rendered" and not i.get("posted_at")]
+             if i.get("status") == "rendered" and not i.get("posted_at")
+             and i.get("pin") not in published]
     # queue order is already round-robin across categories — never re-sort it
     batch = ready[:n]
     pack = []
