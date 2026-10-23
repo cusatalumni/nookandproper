@@ -10,7 +10,9 @@ export function envStatus() {
   return {
     PINTEREST_APP_ID: !!process.env.PINTEREST_APP_ID,
     PINTEREST_APP_SECRET: !!process.env.PINTEREST_APP_SECRET,
-    PINTEREST_REFRESH_TOKEN: !!process.env.PINTEREST_REFRESH_TOKEN,
+    PINTEREST_REFRESH_TOKEN: !!(
+      process.env.PINTEREST_REFRESH_TOKEN || process.env.PINTEREST_REFRESH_TOCKEN
+    ),
     NP_API_KEY: !!process.env.NP_API_KEY,
   };
 }
@@ -18,7 +20,9 @@ export function envStatus() {
 export async function accessToken() {
   const id = process.env.PINTEREST_APP_ID;
   const secret = process.env.PINTEREST_APP_SECRET;
-  const refresh = process.env.PINTEREST_REFRESH_TOKEN;
+  // Accept the obvious misspelling too, so a typo'd env var name does not block setup.
+  const refresh =
+    process.env.PINTEREST_REFRESH_TOKEN || process.env.PINTEREST_REFRESH_TOCKEN;
   if (!id || !secret || !refresh) {
     const missing = Object.entries(envStatus()).filter(([, v]) => !v).map(([k]) => k);
     throw new Error("missing env vars: " + missing.join(", "));
