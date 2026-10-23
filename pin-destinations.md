@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **The Pantry Jars That Changed My Kitchen** (Home Organisation)
+  - Pin image: `/pins/ho-2.png`
+  - Destination: https://nookandproper.vercel.app/p/the-pantry-jars-that-changed-my-kitchen
+  - Goes to Amazon: https://www.amazon.com/s?k=DWLLZA+KITCHEN+Airtight+Food+Storage+Containers+for+Pantry+With&tag=mykada-20
+- **The $50 Fix for a $1,000 Problem** (Sleep & Comfort)
+  - Pin image: `/pins/slp-1.png`
+  - Destination: https://nookandproper.vercel.app/p/the-50-fix-for-a-1-000-problem
+  - Goes to Amazon: https://www.amazon.com/s?k=SOOSLEEPY+Inch+Zone+King+Memory+Foam+Mattress+Topper+Egg&tag=mykada-20
+- **10,000 Steps Without Leaving Home** (Home Fitness)
+  - Pin image: `/pins/fit-1.png`
+  - Destination: https://nookandproper.vercel.app/p/10-000-steps-without-leaving-home
+  - Goes to Amazon: https://www.amazon.com/s?k=UREVO+CyberPad+Smart+Walking+Pad+with+14+Auto+Incline&tag=mykada-20
 - **The 15-Minute Closet Reset** (Home Organisation)
   - Pin image: `/pins/ho-1.png`
   - Destination: https://nookandproper.vercel.app/p/the-15-minute-closet-reset
