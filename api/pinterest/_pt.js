@@ -6,6 +6,10 @@ export function guard(req, res) {
   return true;
 }
 
+export function base(env) {
+  return env === "sandbox" ? "https://api-sandbox.pinterest.com/v5" : "https://api.pinterest.com/v5";
+}
+
 export function envStatus() {
   return {
     PINTEREST_APP_ID: !!process.env.PINTEREST_APP_ID,

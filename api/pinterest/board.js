@@ -1,4 +1,4 @@
-import { guard, accessToken, envStatus } from "./_pt.js";
+import { guard, accessToken, envStatus, base } from "./_pt.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const { name, description } = req.body || {};
     if (!name) return res.status(400).json({ error: "name required" });
     const at = await accessToken();
-    const r = await fetch("https://api.pinterest.com/v5/boards", {
+    const r = await fetch(base(req.body?.env) + "/boards", {
       method: "POST",
       headers: { Authorization: "Bearer " + at, "Content-Type": "application/json" },
       body: JSON.stringify({ name, description: description || "" }),

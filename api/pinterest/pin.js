@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "image_url or image_base64 required" });
 
     const at = await accessToken();
-    const r = await fetch("https://api.pinterest.com/v5/pins", {
+    const r = await fetch(base(req.body?.env) + "/pins", {
       method: "POST",
       headers: { Authorization: "Bearer " + at, "Content-Type": "application/json" },
       body: JSON.stringify({
