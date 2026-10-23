@@ -6,12 +6,23 @@ export function guard(req, res) {
   return true;
 }
 
+export function envStatus() {
+  return {
+    PINTEREST_APP_ID: !!process.env.PINTEREST_APP_ID,
+    PINTEREST_APP_SECRET: !!process.env.PINTEREST_APP_SECRET,
+    PINTEREST_REFRESH_TOKEN: !!process.env.PINTEREST_REFRESH_TOKEN,
+    NP_API_KEY: !!process.env.NP_API_KEY,
+  };
+}
+
 export async function accessToken() {
   const id = process.env.PINTEREST_APP_ID;
   const secret = process.env.PINTEREST_APP_SECRET;
   const refresh = process.env.PINTEREST_REFRESH_TOKEN;
-  if (!id || !secret || !refresh)
-    throw new Error("PINTEREST_APP_ID / PINTEREST_APP_SECRET / PINTEREST_REFRESH_TOKEN not set");
+  if (!id || !secret || !refresh) {
+    const missing = Object.entries(envStatus()).filter(([, v]) => !v).map(([k]) => k);
+    throw new Error("missing env vars: " + missing.join(", "));
+  }
 
   const r = await fetch("https://api.pinterest.com/v5/oauth/token", {
     method: "POST",

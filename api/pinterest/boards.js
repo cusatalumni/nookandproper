@@ -1,4 +1,4 @@
-import { guard, accessToken } from "./_pt.js";
+import { guard, accessToken, envStatus } from "./_pt.js";
 
 export default async function handler(req, res) {
   if (!guard(req, res)) return;
@@ -10,6 +10,6 @@ export default async function handler(req, res) {
     const j = await r.json();
     res.status(r.status).json((j.items || []).map((b) => ({ id: b.id, name: b.name })));
   } catch (e) {
-    res.status(500).json({ error: String(e.message || e) });
+    res.status(500).json({ error: String(e.message || e), env: envStatus() });
   }
 }
