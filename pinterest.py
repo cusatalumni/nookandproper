@@ -40,6 +40,10 @@ def boards():
     return _call("/api/pinterest/boards")
 
 
+def create_board(name, description=""):
+    return _call("/api/pinterest/board", {"name": name, "description": description})
+
+
 def pin(board_id, title, description, link, image_url=None, image_file=None):
     payload = {"board_id": board_id, "title": title, "description": description, "link": link}
     if image_file:
@@ -53,7 +57,8 @@ def pin(board_id, title, description, link, image_url=None, image_file=None):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["boards", "pin", "selftest"])
+    ap.add_argument("cmd", choices=["boards", "create-board", "pin", "selftest"])
+    ap.add_argument("--name")
     ap.add_argument("--board-id"); ap.add_argument("--title"); ap.add_argument("--description", default="")
     ap.add_argument("--link"); ap.add_argument("--image-url"); ap.add_argument("--image-file")
     a = ap.parse_args()
@@ -66,6 +71,8 @@ def main():
             print(f'{b["id"]}  {b["name"]}')
         if not isinstance(r, list):
             print(r)
+    elif a.cmd == "create-board":
+        print(json.dumps(create_board(a.name or "Nook & Proper"), indent=2)[:400])
     elif a.cmd == "pin":
         print(json.dumps(pin(a.board_id, a.title, a.description, a.link,
                              image_url=a.image_url, image_file=a.image_file), indent=2)[:700])
