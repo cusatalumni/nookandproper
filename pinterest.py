@@ -8,7 +8,17 @@ Env: NP_API_KEY   (the same value set in Vercel)
 import argparse, base64, json, os, sys, urllib.error, urllib.request
 
 BASE = os.environ.get("NP_BASE", "https://nookandproper.vercel.app").rstrip("/")
-KEY = os.environ.get("NP_API_KEY", "")
+def _load_key():
+    k = os.environ.get("NP_API_KEY", "")
+    if k:
+        return k
+    f = os.path.expanduser("~/agent-state/.secrets/np_api_key")
+    if os.path.exists(f):
+        return open(f).read().strip()
+    return ""
+
+
+KEY = _load_key()
 
 
 def _call(path, data=None):
