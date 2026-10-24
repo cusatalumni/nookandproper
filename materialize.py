@@ -39,9 +39,11 @@ def main():
         it["image_source"] = f["img"]
         it["link"] = f"https://www.amazon.com/s?k={quote_plus(words)}&tag={tag}"
         it["pin"] = f"{it['id']}.png"
+        price_full = it.get("price", "")
+        price_short = price_full.split("·")[-1].strip() if "·" in price_full else price_full
         pin_factory.compose(img_path, os.path.join(PINS, it["pin"]),
                             kicker=KICK[it["cat"]], headline=it["headline"],
-                            price=it.get("price", ""), badge=it.get("badge", ""),
+                            price=price_short, badge=it.get("badge", ""),
                             sub=it.get("sub", ""), brand=q["brand"])
         it["status"] = "rendered"
         done += 1
