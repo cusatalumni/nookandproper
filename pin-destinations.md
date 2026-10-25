@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **The Ten Minutes After the Workout** (Home Fitness)
+  - Pin image: `/pins/n8.png`
+  - Destination: https://nookandproper.vercel.app/p/the-ten-minutes-after-the-workout
+  - Goes to Amazon: https://www.amazon.com/s?k=GODBOD+Foam+Roller+Deep+Tissue+Medium+Density+Muscle&tag=mykada-20
+- **The Scratching Post Your Cat Actually Uses** (Pet Enrichment)
+  - Pin image: `/pins/n7.png`
+  - Destination: https://nookandproper.vercel.app/p/the-scratching-post-your-cat-actually-uses
+  - Goes to Amazon: https://www.amazon.com/s?k=SmartyKat+Sisal+Angle+Ramp+Cat+Scratcher+Natural+Woven&tag=mykada-20
+- **The Drawer That Stops Eating Cutlery** (Home Organisation)
+  - Pin image: `/pins/n6.png`
+  - Destination: https://nookandproper.vercel.app/p/the-drawer-that-stops-eating-cutlery
+  - Goes to Amazon: https://www.amazon.com/s?k=VaeFae+6+Pack+Adjustable+Bamboo+Drawer+Dividers+Expandable&tag=mykada-20
 - **Wake Up Before Your Alarm Does** (Sleep & Comfort)
   - Pin image: `/pins/n5.png`
   - Destination: https://nookandproper.vercel.app/p/wake-up-before-your-alarm-does

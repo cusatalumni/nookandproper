@@ -375,7 +375,8 @@
       "image_source": "https://sspark.genspark.ai/i/NM9aWeqNKul5JdIH",
       "pin": "n6.png",
       "link": "https://www.amazon.com/s?k=VaeFae+6-Pack+Adjustable+Bamboo+Drawer+Dividers%2C+Expandable+Drawer+Organizer&tag=mykada-20",
-      "status": "rendered"
+      "status": "rendered",
+      "posted_at": "2026-10-25T05:02:00+00:00"
     },
     {
       "id": "n7",
@@ -390,6 +391,53 @@
       "image_source": "https://sspark.genspark.ai/i/GoWnOura6RnjIg1e",
       "pin": "n7.png",
       "link": "https://www.amazon.com/s?k=SmartyKat+Sisal+Angle+Ramp+Cat+Scratcher%2C+Natural+Woven+Sisal&tag=mykada-20",
+      "status": "rendered",
+      "posted_at": "2026-10-25T05:02:00+00:00"
+    },
+    {
+      "id": "n8",
+      "cat": "home-fitness",
+      "product": "GODBOD Foam Roller - Deep Tissue Medium Density Muscle Massager with Myofascial Trigger Point Release, Back Massage Roll",
+      "headline": "The Ten Minutes After the Workout",
+      "sub": "Recovery is the part most people skip.",
+      "price": "Foam rollers · $20–45",
+      "badge": "",
+      "spec": "FOAM",
+      "asin": "",
+      "image_source": "https://sspark.genspark.ai/i/4zNq1qb2N0vZkr4e",
+      "pin": "n8.png",
+      "link": "https://www.amazon.com/s?k=GODBOD+Foam+Roller+-+Deep+Tissue+Medium+Density+Muscle&tag=mykada-20",
+      "status": "rendered",
+      "posted_at": "2026-10-25T05:05:55+00:00"
+    },
+    {
+      "id": "n9",
+      "cat": "sleep-comfort",
+      "product": "LitBear Sleep Mask for Side Sleeper Women Men, Eye Mask for Sleeping | Light Blocking 3D Contoured Sleeping Mask, Soft B",
+      "headline": "The Mask That Makes Naps Actually Work",
+      "sub": "Light blocking beats counting sheep.",
+      "price": "Sleep masks · $18–40",
+      "badge": "",
+      "spec": "BLACKOUT",
+      "asin": "",
+      "image_source": "https://sspark.genspark.ai/i/h7whDHgm1yBZs4Un",
+      "pin": "n9.png",
+      "link": "https://www.amazon.com/s?k=LitBear+Sleep+Mask+for+Side+Sleeper+Women+Men%2C+Eye&tag=mykada-20",
+      "status": "rendered"
+    },
+    {
+      "id": "n10",
+      "cat": "kitchen-air-fryer",
+      "product": "Reusable Cotton Mesh Produce Bags - 100% Organic Cotton, Durable, Double Stitched, Washable with Tare Weight & Drawstrin",
+      "headline": "Bags That Keep Greens Alive Longer",
+      "sub": "Mesh lets ethylene escape; plastic traps it.",
+      "price": "Produce bags · $12–25",
+      "badge": "",
+      "spec": "MESH",
+      "asin": "",
+      "image_source": "https://sspark.genspark.ai/i/axofyfzuzmVfttlv",
+      "pin": "n10.png",
+      "link": "https://www.amazon.com/s?k=Reusable+Cotton+Mesh+Produce+Bags+-+100%25+Organic+Cotton%2C&tag=mykada-20",
       "status": "rendered"
     }
   ]
