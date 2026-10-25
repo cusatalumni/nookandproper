@@ -1,4 +1,4 @@
-import { guard, accessToken } from "./_pt.js";
+import { guard, accessToken, envStatus, base } from "./_pt.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });

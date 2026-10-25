@@ -25,6 +25,18 @@ CAT_LABEL = {"home-organization": "Home Organisation", "pet-enrichment": "Pet En
              "sleep-comfort": "Sleep & Comfort"}
 
 
+def pin_it_url(site, p):
+    """Pinterest's share URL: one click pre-fills image, description and destination."""
+    from urllib.parse import quote
+    base = site.get("site_url", "").rstrip("/")
+    page = f"{base}/p/{p['slug']}"
+    img = f"{base}/pins/{p['pin']}"
+    first = (p.get("body") or "").split(".")[0].strip()
+    desc = f"{p['title']} — {first}." if first else p["title"]
+    return ("https://www.pinterest.com/pin/create/button/?url=" + quote(page, safe="")
+            + "&media=" + quote(img, safe="") + "&description=" + quote(desc[:480], safe=""))
+
+
 def esc(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
             .replace('"', "&quot;"))
@@ -117,6 +129,9 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .buy{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
   font-weight:700;font-size:16px;padding:16px 30px;border-radius:44px;margin:8px 0 6px}
 .buy:hover{filter:brightness(1.08)}
+.save{display:inline-block;margin-left:10px;padding:15px 26px;border:2px solid var(--line);
+  border-radius:44px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+.save:hover{border-color:var(--accent);color:var(--accent)}
 .small{font-size:12.5px;color:var(--muted)}
 .disclosure{background:var(--card);border:1px solid var(--line);border-radius:10px;
   padding:13px 16px;margin:18px 0;font-size:13px;color:var(--muted)}
@@ -284,7 +299,8 @@ def render_post(site, p):
       <h1>{esc(p['title'])}</h1>
       <p class="meta">{esc(p['date'])}{(' · ' + esc(p['price'])) if p['price'] else ''}</p>
       <p>{esc(p['body'])}</p>
-      <p><a class="buy" href="{esc(p['link'])}" data-amazon-path="{esc(amazon_path(p['link']))}" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a></p>
+      <p><a class="buy" href="{esc(p['link'])}" data-amazon-path="{esc(amazon_path(p['link']))}" target="_blank" rel="nofollow sponsored noopener">Check price on Amazon</a>
+      <a class="save" href="{esc(pin_it_url(site, p))}" target="_blank" rel="noopener">Save to Pinterest</a></p>
       <p class="small" hidden>Showing the <b data-region-label></b> store for your location.</p>
       <p class="small">Opens the listing on Amazon.com. Price shown is the usual street price for this
       kind of product, not a live quote — check the listing for the current figure.</p>
