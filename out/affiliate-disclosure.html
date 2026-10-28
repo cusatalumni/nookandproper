@@ -32,6 +32,11 @@ nav.main{display:flex;gap:20px;flex-wrap:wrap}
 nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
   color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;margin:34px 0 0;flex-wrap:wrap}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;
+  padding:0 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;
+  color:var(--muted);font-size:14px}
+.pg.on,.pg:hover{border-color:var(--accent);color:var(--accent)}
 .hero{padding:58px 0 34px;text-align:center}
 .hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
   font-weight:600;letter-spacing:-.5px}
@@ -45,6 +50,12 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);
   border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.cardwrap{position:relative}
+.pinbtn{position:absolute;top:9px;right:9px;height:30px;padding:0 12px;border-radius:15px;
+  background:#e60023;color:#fff;text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:.04em;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
+.pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
 .card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
@@ -92,9 +103,9 @@ window.NP_DEFAULT_REGION = US;</script>
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Nook <span>&amp; Proper</span></a>
-  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a></nav>
+  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a><a href="/archive" class="">Archive</a></nav>
 </div></header>
-<div class="wrap"><article class="legal"><h1>Affiliate disclosure</h1><p class="meta">Last updated 2026-10-25</p>
+<div class="wrap"><article class="legal"><h1>Affiliate disclosure</h1><p class="meta">Last updated 2026-10-28</p>
 <p>Nook &amp; Proper is a participant in the Amazon Services LLC Associates Program, an affiliate
 advertising program designed to provide a means for sites to earn advertising fees by advertising and
 linking to Amazon.com.</p>
@@ -125,6 +136,7 @@ program. The layout, typography, framing and watermark on every pin are ours.</p
       <a href="/category/home-organization">Home Organisation</a><a href="/category/pet-enrichment">Pet Enrichment</a><a href="/category/kitchen-air-fryer">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness">Home Fitness</a><a href="/category/sleep-comfort">Sleep &amp; Comfort</a>
     </div>
     <div><h4>Nook &amp; Proper</h4>
+      <a href="/archive">Archive</a>
       <a href="/about">About us</a>
       <a href="/affiliate-disclosure">Affiliate disclosure</a>
       <a href="/privacy">Privacy policy</a>

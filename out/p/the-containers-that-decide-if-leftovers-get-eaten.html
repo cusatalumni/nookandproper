@@ -36,6 +36,11 @@ nav.main{display:flex;gap:20px;flex-wrap:wrap}
 nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
   color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;margin:34px 0 0;flex-wrap:wrap}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;
+  padding:0 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;
+  color:var(--muted);font-size:14px}
+.pg.on,.pg:hover{border-color:var(--accent);color:var(--accent)}
 .hero{padding:58px 0 34px;text-align:center}
 .hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
   font-weight:600;letter-spacing:-.5px}
@@ -49,6 +54,12 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);
   border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.cardwrap{position:relative}
+.pinbtn{position:absolute;top:9px;right:9px;height:30px;padding:0 12px;border-radius:15px;
+  background:#e60023;color:#fff;text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:.04em;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
+.pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
 .card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
@@ -97,7 +108,7 @@ window.NP_DEFAULT_REGION = US;</script>
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Nook <span>&amp; Proper</span></a>
-  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="on">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a></nav>
+  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="on">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a><a href="/archive" class="">Archive</a></nav>
 </div></header>
 <div class="wrap"><article class="article">
   <p class="kicker">Kitchen &amp; Air Fryer</p>
@@ -115,13 +126,14 @@ window.NP_DEFAULT_REGION = US;</script>
       <div class="disclosure"><b>Affiliate disclosure.</b> We earn a commission from qualifying purchases
       made through this link, at no extra cost to you. This does not affect what we recommend.</div>
     </div>
-  </div><section class="section"><div class="section-head"><h2>More in Kitchen &amp; Air Fryer</h2><a href="/category/kitchen-air-fryer.html">See all &rarr;</a></div><div class="grid"><a class="card" href="/p/the-sheet-pan-mat-that-replaced-foil"><img src="/pins/n3.png" alt="The Sheet Pan Mat That Replaced Foil" loading="lazy"><div class="cap"><b>The Sheet Pan Mat That Replaced Foil</b><small>Baking mats · $12–25</small></div></a><a class="card" href="/p/dinner-in-20-minutes-one-drawer"><img src="/pins/kit-1.png" alt="Dinner in 20 Minutes, One Drawer" loading="lazy"><div class="cap"><b>Dinner in 20 Minutes, One Drawer</b><small>Air fryers · $70–120</small></div></a><a class="card" href="/p/the-12-that-ends-the-soaking"><img src="/pins/kit-3.png" alt="The $12 That Ends the Soaking" loading="lazy"><div class="cap"><b>The $12 That Ends the Soaking</b><small>Liners · $10–20</small></div></a><a class="card" href="/p/small-appliances-under-100-that-earn-their-space"><img src="/pins/kit-4.png" alt="Small Appliances Under $100 That Earn Their Space" loading="lazy"><div class="cap"><b>Small Appliances Under $100 That Earn Their Space</b><small>Blenders · $30–60</small></div></a></div></section></article></div>
+  </div><section class="section"><div class="section-head"><h2>More in Kitchen &amp; Air Fryer</h2><a href="/category/kitchen-air-fryer.html">See all &rarr;</a></div><div class="grid"><div class="cardwrap"><a class="card" href="/p/the-sheet-pan-mat-that-replaced-foil"><img src="/pins/n3.png" alt="The Sheet Pan Mat That Replaced Foil" loading="lazy"><div class="cap"><b>The Sheet Pan Mat That Replaced Foil</b><small>Baking mats · $12–25</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-sheet-pan-mat-that-replaced-foil&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fn3.png&amp;description=The%20Sheet%20Pan%20Mat%20That%20Replaced%20Foil%20%E2%80%94%20Foil%20is%20the%20reason%20people%20stop%20roasting%20vegetables%3A%20it%20tears%2C%20it%20sticks%2C%20and%20it%20never%20covers%20the%20pan%20you%20actually%20have." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/dinner-in-20-minutes-one-drawer"><img src="/pins/kit-1.png" alt="Dinner in 20 Minutes, One Drawer" loading="lazy"><div class="cap"><b>Dinner in 20 Minutes, One Drawer</b><small>Air fryers · $70–120</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fdinner-in-20-minutes-one-drawer&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fkit-1.png&amp;description=Dinner%20in%2020%20Minutes%2C%20One%20Drawer%20%E2%80%94%20The%20clear%20window%20is%20the%20feature%20people%20underestimate." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/the-12-that-ends-the-soaking"><img src="/pins/kit-3.png" alt="The $12 That Ends the Soaking" loading="lazy"><div class="cap"><b>The $12 That Ends the Soaking</b><small>Liners · $10–20</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-12-that-ends-the-soaking&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fkit-3.png&amp;description=The%20%2412%20That%20Ends%20the%20Soaking%20%E2%80%94%20Perforated%20parchment%20liners%20are%20the%20cheapest%20quality-of-life%20purchase%20in%20the%20air%20fryer%20category." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/small-appliances-under-100-that-earn-their-space"><img src="/pins/kit-4.png" alt="Small Appliances Under $100 That Earn Their Space" loading="lazy"><div class="cap"><b>Small Appliances Under $100 That Earn Their Space</b><small>Blenders · $30–60</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fsmall-appliances-under-100-that-earn-their-space&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fkit-4.png&amp;description=Small%20Appliances%20Under%20%24100%20That%20Earn%20Their%20Space%20%E2%80%94%20An%20immersion%20blender%20earns%20counter%20space%20because%20it%20does%20three%20jobs%20with%20one%20handle%3A%20soup%2C%20sauce%2C%20and%20%E2%80%94%20with%20the%20chopper%20attachment%20%E2%80%94%20anything%20that%20would%20otherwise%20mean%20getting%20the%20food%20processor%20out%20and%20washing%20it." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div></div></section></article></div>
 <footer class="site"><div class="wrap">
   <div class="cols">
     <div><h4>Categories</h4>
       <a href="/category/home-organization">Home Organisation</a><a href="/category/pet-enrichment">Pet Enrichment</a><a href="/category/kitchen-air-fryer">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness">Home Fitness</a><a href="/category/sleep-comfort">Sleep &amp; Comfort</a>
     </div>
     <div><h4>Nook &amp; Proper</h4>
+      <a href="/archive">Archive</a>
       <a href="/about">About us</a>
       <a href="/affiliate-disclosure">Affiliate disclosure</a>
       <a href="/privacy">Privacy policy</a>

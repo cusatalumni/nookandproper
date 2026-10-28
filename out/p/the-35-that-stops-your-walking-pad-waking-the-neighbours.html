@@ -36,6 +36,11 @@ nav.main{display:flex;gap:20px;flex-wrap:wrap}
 nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
   color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;margin:34px 0 0;flex-wrap:wrap}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;
+  padding:0 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;
+  color:var(--muted);font-size:14px}
+.pg.on,.pg:hover{border-color:var(--accent);color:var(--accent)}
 .hero{padding:58px 0 34px;text-align:center}
 .hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
   font-weight:600;letter-spacing:-.5px}
@@ -49,6 +54,12 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);
   border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.cardwrap{position:relative}
+.pinbtn{position:absolute;top:9px;right:9px;height:30px;padding:0 12px;border-radius:15px;
+  background:#e60023;color:#fff;text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:.04em;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
+.pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
 .card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
@@ -97,7 +108,7 @@ window.NP_DEFAULT_REGION = US;</script>
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Nook <span>&amp; Proper</span></a>
-  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="on">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a></nav>
+  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="on">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a><a href="/archive" class="">Archive</a></nav>
 </div></header>
 <div class="wrap"><article class="article">
   <p class="kicker">Home Fitness</p>
@@ -115,13 +126,14 @@ window.NP_DEFAULT_REGION = US;</script>
       <div class="disclosure"><b>Affiliate disclosure.</b> We earn a commission from qualifying purchases
       made through this link, at no extra cost to you. This does not affect what we recommend.</div>
     </div>
-  </div><section class="section"><div class="section-head"><h2>More in Home Fitness</h2><a href="/category/home-fitness.html">See all &rarr;</a></div><div class="grid"><a class="card" href="/p/the-ten-minutes-after-the-workout"><img src="/pins/n8.png" alt="The Ten Minutes After the Workout" loading="lazy"><div class="cap"><b>The Ten Minutes After the Workout</b><small>Foam rollers · $20–45</small></div></a><a class="card" href="/p/a-gym-in-a-drawer-for-under-30"><img src="/pins/n4.png" alt="A Gym in a Drawer for Under $30" loading="lazy"><div class="cap"><b>A Gym in a Drawer for Under $30</b><small>Band sets · $18–40</small></div></a><a class="card" href="/p/10-000-steps-without-leaving-home"><img src="/pins/fit-1.png" alt="10,000 Steps Without Leaving Home" loading="lazy"><div class="cap"><b>10,000 Steps Without Leaving Home</b><small>Walking pads · $90–180</small></div></a><a class="card" href="/p/cozy-cardio-the-gym-free-routine-that-stuck"><img src="/pins/fit-3.png" alt="Cozy Cardio: The Gym-Free Routine That Stuck" loading="lazy"><div class="cap"><b>Cozy Cardio: The Gym-Free Routine That Stuck</b><small>Rings &amp; mats · $20–40</small></div></a></div></section></article></div>
+  </div><section class="section"><div class="section-head"><h2>More in Home Fitness</h2><a href="/category/home-fitness.html">See all &rarr;</a></div><div class="grid"><div class="cardwrap"><a class="card" href="/p/the-ten-minutes-after-the-workout"><img src="/pins/n8.png" alt="The Ten Minutes After the Workout" loading="lazy"><div class="cap"><b>The Ten Minutes After the Workout</b><small>Foam rollers · $20–45</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-ten-minutes-after-the-workout&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fn8.png&amp;description=The%20Ten%20Minutes%20After%20the%20Workout%20%E2%80%94%20Recovery%20is%20the%20part%20of%20a%20home%20routine%20people%20skip%2C%20mostly%20because%20it%20looks%20like%20doing%20nothing." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/a-gym-in-a-drawer-for-under-30"><img src="/pins/n4.png" alt="A Gym in a Drawer for Under $30" loading="lazy"><div class="cap"><b>A Gym in a Drawer for Under $30</b><small>Band sets · $18–40</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fa-gym-in-a-drawer-for-under-30&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fn4.png&amp;description=A%20Gym%20in%20a%20Drawer%20for%20Under%20%2430%20%E2%80%94%20Resistance%20bands%20are%20the%20only%20home-gym%20purchase%20with%20no%20floor%20space%20cost%2C%20which%20is%20why%20they%20survive%20when%20treadmills%20become%20coat%20racks." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/10-000-steps-without-leaving-home"><img src="/pins/fit-1.png" alt="10,000 Steps Without Leaving Home" loading="lazy"><div class="cap"><b>10,000 Steps Without Leaving Home</b><small>Walking pads · $90–180</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2F10-000-steps-without-leaving-home&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Ffit-1.png&amp;description=10%2C000%20Steps%20Without%20Leaving%20Home%20%E2%80%94%20A%20walking%20pad%20solves%20the%20specific%20problem%20of%20winter%2C%20not%20the%20general%20problem%20of%20fitness." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/cozy-cardio-the-gym-free-routine-that-stuck"><img src="/pins/fit-3.png" alt="Cozy Cardio: The Gym-Free Routine That Stuck" loading="lazy"><div class="cap"><b>Cozy Cardio: The Gym-Free Routine That Stuck</b><small>Rings &amp; mats · $20–40</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fcozy-cardio-the-gym-free-routine-that-stuck&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Ffit-3.png&amp;description=Cozy%20Cardio%3A%20The%20Gym-Free%20Routine%20That%20Stuck%20%E2%80%94%20A%20pilates%20ring%20is%20the%20cheapest%20way%20to%20add%20resistance%20to%20movement%20you%20already%20do." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div></div></section></article></div>
 <footer class="site"><div class="wrap">
   <div class="cols">
     <div><h4>Categories</h4>
       <a href="/category/home-organization">Home Organisation</a><a href="/category/pet-enrichment">Pet Enrichment</a><a href="/category/kitchen-air-fryer">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness">Home Fitness</a><a href="/category/sleep-comfort">Sleep &amp; Comfort</a>
     </div>
     <div><h4>Nook &amp; Proper</h4>
+      <a href="/archive">Archive</a>
       <a href="/about">About us</a>
       <a href="/affiliate-disclosure">Affiliate disclosure</a>
       <a href="/privacy">Privacy policy</a>

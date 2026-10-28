@@ -36,6 +36,11 @@ nav.main{display:flex;gap:20px;flex-wrap:wrap}
 nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
   color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;margin:34px 0 0;flex-wrap:wrap}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;
+  padding:0 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;
+  color:var(--muted);font-size:14px}
+.pg.on,.pg:hover{border-color:var(--accent);color:var(--accent)}
 .hero{padding:58px 0 34px;text-align:center}
 .hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
   font-weight:600;letter-spacing:-.5px}
@@ -49,6 +54,12 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);
   border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.cardwrap{position:relative}
+.pinbtn{position:absolute;top:9px;right:9px;height:30px;padding:0 12px;border-radius:15px;
+  background:#e60023;color:#fff;text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:.04em;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
+.pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
 .card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
@@ -97,7 +108,7 @@ window.NP_DEFAULT_REGION = US;</script>
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">Nook <span>&amp; Proper</span></a>
-  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="on">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a></nav>
+  <nav class="main"><a href="/category/home-organization" class="">Home Organisation</a><a href="/category/pet-enrichment" class="on">Pet Enrichment</a><a href="/category/kitchen-air-fryer" class="">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness" class="">Home Fitness</a><a href="/category/sleep-comfort" class="">Sleep &amp; Comfort</a><a href="/archive" class="">Archive</a></nav>
 </div></header>
 <div class="wrap"><article class="article">
   <p class="kicker">Pet Enrichment</p>
@@ -115,13 +126,14 @@ window.NP_DEFAULT_REGION = US;</script>
       <div class="disclosure"><b>Affiliate disclosure.</b> We earn a commission from qualifying purchases
       made through this link, at no extra cost to you. This does not affect what we recommend.</div>
     </div>
-  </div><section class="section"><div class="section-head"><h2>More in Pet Enrichment</h2><a href="/category/pet-enrichment.html">See all &rarr;</a></div><div class="grid"><a class="card" href="/p/the-scratching-post-your-cat-actually-uses"><img src="/pins/n7.png" alt="The Scratching Post Your Cat Actually Uses" loading="lazy"><div class="cap"><b>The Scratching Post Your Cat Actually Uses</b><small>Cat scratchers · $15–35</small></div></a><a class="card" href="/p/the-30-fix-for-a-bored-dog"><img src="/pins/pe-1.png" alt="The $30 Fix for a Bored Dog" loading="lazy"><div class="cap"><b>The $30 Fix for a Bored Dog</b><small>Snuffle mats · $18–35</small></div></a><a class="card" href="/p/the-bed-that-calms-an-anxious-dog"><img src="/pins/pe-3.png" alt="The Bed That Calms an Anxious Dog" loading="lazy"><div class="cap"><b>The Bed That Calms an Anxious Dog</b><small>Calming dog beds · $25–50</small></div></a><a class="card" href="/p/the-calming-trick-vet-nurses-use"><img src="/pins/pe-4.png" alt="The Calming Trick Vet Nurses Use" loading="lazy"><div class="cap"><b>The Calming Trick Vet Nurses Use</b><small>Lick mats · $10–20</small></div></a></div></section></article></div>
+  </div><section class="section"><div class="section-head"><h2>More in Pet Enrichment</h2><a href="/category/pet-enrichment.html">See all &rarr;</a></div><div class="grid"><div class="cardwrap"><a class="card" href="/p/the-scratching-post-your-cat-actually-uses"><img src="/pins/n7.png" alt="The Scratching Post Your Cat Actually Uses" loading="lazy"><div class="cap"><b>The Scratching Post Your Cat Actually Uses</b><small>Cat scratchers · $15–35</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-scratching-post-your-cat-actually-uses&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fn7.png&amp;description=The%20Scratching%20Post%20Your%20Cat%20Actually%20Uses%20%E2%80%94%20Cats%20shred%20cardboard%20in%20weeks%20and%20ignore%20carpet%20entirely%2C%20which%20is%20why%20sisal%20lasts%20longer%20than%20either." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/the-30-fix-for-a-bored-dog"><img src="/pins/pe-1.png" alt="The $30 Fix for a Bored Dog" loading="lazy"><div class="cap"><b>The $30 Fix for a Bored Dog</b><small>Snuffle mats · $18–35</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-30-fix-for-a-bored-dog&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fpe-1.png&amp;description=The%20%2430%20Fix%20for%20a%20Bored%20Dog%20%E2%80%94%20A%20dog%20that%20eats%20from%20a%20bowl%20in%20ninety%20seconds%20has%20an%20empty%20afternoon." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/the-bed-that-calms-an-anxious-dog"><img src="/pins/pe-3.png" alt="The Bed That Calms an Anxious Dog" loading="lazy"><div class="cap"><b>The Bed That Calms an Anxious Dog</b><small>Calming dog beds · $25–50</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-bed-that-calms-an-anxious-dog&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fpe-3.png&amp;description=The%20Bed%20That%20Calms%20an%20Anxious%20Dog%20%E2%80%94%20The%20chin-up%20rim%20is%20the%20whole%20design." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div><div class="cardwrap"><a class="card" href="/p/the-calming-trick-vet-nurses-use"><img src="/pins/pe-4.png" alt="The Calming Trick Vet Nurses Use" loading="lazy"><div class="cap"><b>The Calming Trick Vet Nurses Use</b><small>Lick mats · $10–20</small></div></a><a class="pinbtn" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fnookandproper.vercel.app%2Fp%2Fthe-calming-trick-vet-nurses-use&amp;media=https%3A%2F%2Fnookandproper.vercel.app%2Fpins%2Fpe-4.png&amp;description=The%20Calming%20Trick%20Vet%20Nurses%20Use%20%E2%80%94%20Licking%20is%20a%20self-soothing%20behaviour%2C%20not%20a%20hunger%20behaviour%2C%20which%20is%20why%20a%20thin%20smear%20of%20peanut%20butter%20on%20a%20textured%20mat%20does%20more%20for%20a%20stressed%20dog%20than%20a%20chewier%20toy." target="_blank" rel="noopener" title="Save to Pinterest" aria-label="Save to Pinterest">Save</a></div></div></section></article></div>
 <footer class="site"><div class="wrap">
   <div class="cols">
     <div><h4>Categories</h4>
       <a href="/category/home-organization">Home Organisation</a><a href="/category/pet-enrichment">Pet Enrichment</a><a href="/category/kitchen-air-fryer">Kitchen &amp; Air Fryer</a><a href="/category/home-fitness">Home Fitness</a><a href="/category/sleep-comfort">Sleep &amp; Comfort</a>
     </div>
     <div><h4>Nook &amp; Proper</h4>
+      <a href="/archive">Archive</a>
       <a href="/about">About us</a>
       <a href="/affiliate-disclosure">Affiliate disclosure</a>
       <a href="/privacy">Privacy policy</a>

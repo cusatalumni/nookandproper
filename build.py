@@ -97,6 +97,11 @@ nav.main{display:flex;gap:20px;flex-wrap:wrap}
 nav.main a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
   color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pager{display:flex;gap:8px;justify-content:center;margin:34px 0 0;flex-wrap:wrap}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;
+  padding:0 10px;border:1px solid var(--line);border-radius:10px;text-decoration:none;
+  color:var(--muted);font-size:14px}
+.pg.on,.pg:hover{border-color:var(--accent);color:var(--accent)}
 .hero{padding:58px 0 34px;text-align:center}
 .hero h1{font-family:Georgia,serif;font-size:clamp(29px,4.6vw,46px);line-height:1.16;margin:0 0 14px;
   font-weight:600;letter-spacing:-.5px}
@@ -110,6 +115,12 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:20px}
 .card{display:block;text-decoration:none;color:inherit;background:var(--card);
   border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+.cardwrap{position:relative}
+.pinbtn{position:absolute;top:9px;right:9px;height:30px;padding:0 12px;border-radius:15px;
+  background:#e60023;color:#fff;text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:.04em;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
+.pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
 .card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
@@ -206,7 +217,7 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="/">{esc(site['brand'].split(' ')[0])} <span>{esc(' '.join(site['brand'].split(' ')[1:]))}</span></a>
-  <nav class="main">{nav}</nav>
+  <nav class="main">{nav}<a href="/archive" class="{"on" if active == "archive" else ""}">Archive</a></nav>
 </div></header>
 {body}
 <footer class="site"><div class="wrap">
@@ -215,6 +226,7 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
       {"".join(f'<a href="/category/{c['slug']}">{esc(CAT_LABEL.get(c["slug"], c["name"]))}</a>' for c in site["categories"])}
     </div>
     <div><h4>{esc(site['brand'])}</h4>
+      <a href="/archive">Archive</a>
       <a href="/about">About us</a>
       <a href="/affiliate-disclosure">Affiliate disclosure</a>
       <a href="/privacy">Privacy policy</a>
@@ -233,10 +245,14 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 </html>"""
 
 
-def card(p):
-    return (f'<a class="card" href="/p/{esc(p["slug"])}">'
+def card(site, p):
+    return (f'<div class="cardwrap">'
+            f'<a class="card" href="/p/{esc(p["slug"])}">'
             f'<img src="/pins/{esc(p["pin"])}" alt="{esc(p["title"])}" loading="lazy">'
-            f'<div class="cap"><b>{esc(p["title"])}</b><small>{esc(p["price"])}</small></div></a>')
+            f'<div class="cap"><b>{esc(p["title"])}</b><small>{esc(p["price"])}</small></div></a>'
+            f'<a class="pinbtn" href="{esc(pin_it_url(site, p))}" target="_blank" rel="noopener" '
+            f'title="Save to Pinterest" aria-label="Save to Pinterest">Save</a>'
+            f'</div>')
 
 
 def render_home(site):
@@ -253,7 +269,7 @@ def render_home(site):
         out.append(f"""<section class="section">
   <div class="section-head"><h2>{esc(label)}</h2>
   <a href="/category/{esc(c['slug'])}">All {len(mine)} in {esc(label)} &rarr;</a></div>
-  <div class="grid">{''.join(card(p) for p in mine[:PER_HOME])}</div>
+  <div class="grid">{''.join(card(site, p) for p in mine[:PER_HOME])}</div>
 </section>""")
     out.append("</div>")
     return "".join(out)
@@ -276,7 +292,7 @@ def render_category(site, c, page=1):
         for para in pillar.get("body", []):
             body.append(f"<p>{esc(para)}</p>")
     if posts:
-        body.append(f'<div class="grid" style="margin-top:28px">{"".join(card(p) for p in posts)}</div>')
+        body.append(f'<div class="grid" style="margin-top:28px">{"".join(card(site, p) for p in posts)}</div>')
     if pages > 1:
         links = []
         for n in range(1, pages + 1):
@@ -286,6 +302,24 @@ def render_category(site, c, page=1):
     if c.get("keywords"):
         body.append(f'<p class="small" style="margin-top:22px">Search: {esc(" · ".join(c["keywords"]))}</p>')
     body.append('</article></div>')
+    return "".join(body)
+
+
+def render_archive(site, page=1, per=24):
+    posts = sorted(site["_posts"], key=lambda x: x.get("date", ""), reverse=True)
+    pages = max(1, -(-len(posts) // per))
+    chunk = posts[(page - 1) * per: page * per]
+    body = [f'<div class="wrap"><article class="article"><p class="kicker">Archive</p>'
+            f'<h1>Every pick so far</h1>'
+            f'<p class="meta">{len(posts)} posts · page {page} of {pages}</p>'
+            f'<div class="grid">{"".join(card(site, x) for x in chunk)}</div>']
+    if pages > 1:
+        links = []
+        for n in range(1, pages + 1):
+            href = "/archive" if n == 1 else f"/archive/page-{n}"
+            links.append(f'<a class="pg{" on" if n == page else ""}" href="{href}">{n}</a>')
+        body.append(f'<nav class="pager">{"".join(links)}</nav>')
+    body.append("</article></div>")
     return "".join(body)
 
 
@@ -311,7 +345,7 @@ def render_post(site, p):
     if related:
         body += (f'<section class="section"><div class="section-head"><h2>More in '
                  f'{esc(p["cat_label"])}</h2><a href="/category/{esc(p["cat"])}.html">See all &rarr;</a></div>'
-                 f'<div class="grid">{"".join(card(r) for r in related)}</div></section>')
+                 f'<div class="grid">{"".join(card(site, r) for r in related)}</div></section>')
     body += "</article></div>"
     return body
 
@@ -478,6 +512,15 @@ def main():
                           article={"published": p["date"] or date.today().isoformat(),
                                    "section": p["cat_label"], "pin": p["pin"]}))
         urls.append(f"/p/{p['slug']}")
+
+    posts_sorted = len(site["_posts"])
+    apages = max(1, -(-posts_sorted // 24))
+    for pg in range(1, apages + 1):
+        rel = "archive.html" if pg == 1 else f"archive/page-{pg}.html"
+        clean = "/archive" if pg == 1 else f"/archive/page-{pg}"
+        write(rel, layout(site, f"Archive — {site['brand']}", render_archive(site, pg), clean,
+                          active="archive"))
+        urls.append(clean)
 
     for key in LEGAL:
         write(f"{key}.html", layout(site, f"{LEGAL[key][0]} — {site['brand']}",
