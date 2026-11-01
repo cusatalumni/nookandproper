@@ -135,7 +135,7 @@ def compose(image_path, out_path, kicker, headline, price="", brand="kada finds"
         for w, is_acc in words:
             fnt = af if is_acc else hf
             ww = d.textlength(w + " ", font=fnt)
-            if cur and curw + ww - space > max_w:
+            if cur and curw + ww - space > max_w * 0.94:
                 lines.append(cur); cur, curw = [], 0.0
             cur.append((w, fnt, is_acc)); curw += ww
         if cur:
