@@ -63,6 +63,14 @@ def main():
         return
 
     json.dump(feed, open(FEED, "w"), indent=2, ensure_ascii=False)
+
+    # keep out/pins in sync with pins/ or the pages 404 on their images
+    import shutil
+    src, dst = os.path.join(BASE, "pins"), os.path.join(BASE, "out", "pins")
+    os.makedirs(dst, exist_ok=True)
+    for f in os.listdir(src):
+        if f.lower().endswith(".png"):
+            shutil.copy2(os.path.join(src, f), os.path.join(dst, f))
     out = subprocess.run(["./push.sh", f"daily pins {date.today().isoformat()}"],
                          cwd=BASE, capture_output=True, text=True)
     print(json.dumps({"published": [p["headline"] for p in added],
