@@ -31,6 +31,14 @@ ENTRY = re.compile(r'!\[(?P<title>[^\]]{20,300})\]\((?P<img>https://sspark\.gens
 
 
 def crawl(query):
+    # CREDIT GUARD (2026-11-01): gsk web tools bill the owner's Genspark credits.
+    # Never spend them implicitly from a pipeline script. Opt in per call:
+    #   NP_ALLOW_GSK=1 python3 refill.py
+    # Preferred free path: the owner supplies a product link + photo (see README).
+    if os.environ.get("NP_ALLOW_GSK") != "1":
+        raise RuntimeError(
+            "gsk crawler disabled by credit guard; re-run with NP_ALLOW_GSK=1 "
+            "only if you accept the credit cost, or supply product links/photos instead")
     url = f"https://www.amazon.com/s?k={query.replace(' ', '+')}"
     p = subprocess.run(["gsk", "crawler", url], capture_output=True, text=True, timeout=200)
     d = json.loads(p.stdout)
