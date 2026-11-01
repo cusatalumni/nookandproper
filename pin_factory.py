@@ -175,12 +175,12 @@ def compose(image_path, out_path, kicker, headline, price="", brand="kada finds"
         sf = sans(24, True)
         if spec:
             sw = d.textlength(spec, font=sf)
-            d.text((cx - sw / 2, cy - 46), spec, font=sf, fill=(50, 36, 12))
+            d.text((cx - sw / 2, cy - 50), spec, font=sf, fill=(50, 36, 12))
         size = 38
-        for cand in (38, 34, 30, 26, 22, 18):
+        for cand in (38, 34, 30, 26, 22, 18, 16):
             size = cand
             pf = display(cand, 700)
-            if d.textlength(price, font=pf) <= 2 * r - 22:
+            if d.textlength(price, font=pf) <= 2 * r - 42:
                 break
         pf = display(size, 700)
         pw = d.textlength(price, font=pf)

@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **A Pantry You Can Read at a Glance, 24 Containers** (Home Organisation)
+  - Pin image: `/pins/ho-5.png`
+  - Destination: https://nookandproper.vercel.app/p/a-pantry-you-can-read-at-a-glance-24-containers
+  - Goes to Amazon: https://www.amazon.com/dp/B08ZK5WDWN?tag=mykada-20
+- **Bags That Keep Greens Alive Longer** (Kitchen & Air Fryer)
+  - Pin image: `/pins/n10.png`
+  - Destination: https://nookandproper.vercel.app/p/bags-that-keep-greens-alive-longer
+  - Goes to Amazon: https://www.amazon.com/s?k=Reusable+Cotton+Mesh+Produce+Bags+-+100%25+Organic+Cotton%2C&tag=mykada-20
+- **The Mask That Makes Naps Actually Work** (Sleep & Comfort)
+  - Pin image: `/pins/n9.png`
+  - Destination: https://nookandproper.vercel.app/p/the-mask-that-makes-naps-actually-work
+  - Goes to Amazon: https://www.amazon.com/s?k=LitBear+Sleep+Mask+for+Side+Sleeper+Women+Men%2C+Eye&tag=mykada-20
 - **The Ten Minutes After the Workout** (Home Fitness)
   - Pin image: `/pins/n8.png`
   - Destination: https://nookandproper.vercel.app/p/the-ten-minutes-after-the-workout
