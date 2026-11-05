@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-05",
+    "cat": "home-fitness",
+    "title": "The Number That Matters, Smart Scale",
+    "body": "A scale that logs the number is more useful than one that only shows it, because body weight moves for reasons that have nothing to do with fat: salt, sleep, a late dinner. Seeing the trend instead of a single morning reading stops the pointless panic. Body fat and BMI on this one are rough estimates, so treat them as direction rather than truth.",
+    "pin": "fit-5.png",
+    "link": "https://www.amazon.com/dp/B095YJW56C?tag=mykada-20",
+    "price": "$19.94"
+  },
+  {
+    "date": "2026-11-05",
+    "cat": "kitchen-air-fryer",
+    "title": "Stop Guessing the Chicken, Instant Read",
+    "body": "A thermometer removes the guesswork that makes people overcook chicken. This one folds shut, reads in seconds, and takes a magnet on the fridge rather than a grave in a drawer. Probe the thickest part and wait for the number to settle — the first reading on any instant thermometer runs low, which is exactly when people pull the meat off.",
+    "pin": "kit-5.png",
+    "link": "https://www.amazon.com/dp/B00S93EQUK?tag=mykada-20",
+    "price": "$15.98"
+  },
+  {
+    "date": "2026-11-05",
+    "cat": "pet-enrichment",
+    "title": "Ten Minutes That Settle the Cat, Two Wands",
+    "body": "A wand works because it moves like prey: jerky, low, then away. This set gives you two wands and nine feather refills, so one can be put away while the other is in play — which keeps the toy interesting instead of familiar. Refills matter, because the feathers are the part that gets destroyed. Ten minutes twice a day does more for a bored indoor cat than any battery toy left running.",
+    "pin": "pe-5.png",
+    "link": "https://www.amazon.com/dp/B07F45GGPT?tag=mykada-20",
+    "price": "$8.89"
+  },
+  {
     "date": "2026-11-01",
     "cat": "home-organization",
     "title": "A Pantry You Can Read at a Glance, 24 Containers",
