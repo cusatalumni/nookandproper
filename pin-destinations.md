@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **The Toy That Bats Back, Six Balls** (Pet Enrichment)
+  - Pin image: `/pins/pe-6.png`
+  - Destination: https://nookandproper.vercel.app/p/the-toy-that-bats-back-six-balls
+  - Goes to Amazon: https://www.amazon.com/dp/B00DT2WL26?tag=mykada-20
+- **Cans Stop Rolling to the Back, Three Tiers** (Home Organisation)
+  - Pin image: `/pins/ho-6.png`
+  - Destination: https://nookandproper.vercel.app/p/cans-stop-rolling-to-the-back-three-tiers
+  - Goes to Amazon: https://www.amazon.com/dp/B08CGHSY9G?tag=mykada-20
+- **Blackout Without Pressure on Your Eyes** (Sleep & Comfort)
+  - Pin image: `/pins/slp-5.png`
+  - Destination: https://nookandproper.vercel.app/p/blackout-without-pressure-on-your-eyes
+  - Goes to Amazon: https://www.amazon.com/dp/B07KC5DWCC?tag=mykada-20
 - **The Number That Matters, Smart Scale** (Home Fitness)
   - Pin image: `/pins/fit-5.png`
   - Destination: https://nookandproper.vercel.app/p/the-number-that-matters-smart-scale
