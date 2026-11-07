@@ -122,7 +122,7 @@ nav.main a:hover,nav.main a.on{color:var(--accent);border-bottom-color:var(--acc
   box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.94}
 .pinbtn:hover{opacity:1;transform:scale(1.06)}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(60,40,20,.12)}
-.card img{width:100%;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
+.card img{width:100%;height:auto;display:block;aspect-ratio:2/3;object-fit:cover;background:#efe7dc}
 .card .cap{padding:11px 13px 14px}
 .card .cap b{display:block;font-size:13.5px;line-height:1.35;font-weight:600}
 .card .cap small{display:block;color:var(--muted);font-size:12px;margin-top:4px}
@@ -245,10 +245,12 @@ window.NP_DEFAULT_REGION = {esc(site.get('default_region','US'))};</script>
 </html>"""
 
 
-def card(site, p):
+def card(site, p, eager=False):
+    jpg = p["pin"][:-4] + ".jpg"
     return (f'<div class="cardwrap">'
             f'<a class="card" href="/p/{esc(p["slug"])}">'
-            f'<img src="/pins/{esc(p["pin"])}" alt="{esc(p["title"])}" loading="lazy">'
+            f'<img src="/pins/{esc(jpg)}" alt="{esc(p["title"])}" width="1000" height="1500" '
+            f'loading="{"eager" if eager else "lazy"}" decoding="async">'
             f'<div class="cap"><b>{esc(p["title"])}</b><small>{esc(p["price"])}</small></div></a>'
             f'<a class="pinbtn" href="{esc(pin_it_url(site, p))}" target="_blank" rel="noopener" '
             f'title="Save to Pinterest" aria-label="Save to Pinterest">Save</a>'
@@ -451,6 +453,26 @@ def render_legal(site, key):
            f'<p class="meta">Last updated {date.today().isoformat()}</p>{body}</article></div>'
 
 
+def make_jpegs():
+    """The pages show JPEGs (~1/3 the bytes); Pinterest still gets the PNG."""
+    from PIL import Image
+    src = os.path.join(BASE, "pins")
+    dst = os.path.join(OUT, "pins")
+    os.makedirs(dst, exist_ok=True)
+    n = 0
+    for fn in os.listdir(src):
+        if not fn.endswith(".png") or fn.startswith("_"):
+            continue
+        jpg = os.path.join(dst, fn[:-4] + ".jpg")
+        png = os.path.join(src, fn)
+        if os.path.exists(jpg) and os.path.getmtime(jpg) >= os.path.getmtime(png):
+            continue
+        Image.open(png).convert("RGB").save(jpg, "JPEG", quality=82, optimize=True,
+                                            progressive=True)
+        n += 1
+    return n
+
+
 def clean_out():
     """Drop stale pages so renamed or removed posts never leave orphans. Keeps pins/."""
     import shutil
@@ -464,6 +486,7 @@ def clean_out():
 def main():
     os.makedirs(OUT, exist_ok=True)
     clean_out()
+    made = make_jpegs()
     site = load()
     site["updated"] = date.today().isoformat()
     written = []
@@ -547,7 +570,7 @@ def main():
     open(os.path.join(OUT, "robots.txt"), "w").write(
         f"User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n")
 
-    print(f"wrote {len(written)} pages · {len(site['_posts'])} posts · "
+    print(f"jpegs: {made} · wrote {len(written)} pages · {len(site['_posts'])} posts · "
           f"{len(site['categories'])} categories")
 
 
