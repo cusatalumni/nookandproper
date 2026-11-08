@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **The Basket Stops Being a Chore, Liners** (Kitchen & Air Fryer)
+  - Pin image: `/pins/kit-7.png`
+  - Destination: https://nookandproper.vercel.app/p/the-basket-stops-being-a-chore-liners
+  - Goes to Amazon: https://www.amazon.com/dp/B0C6Y8NYK1?tag=mykada-20
+- **A Toy That Keeps Moving, Rechargeable** (Pet Enrichment)
+  - Pin image: `/pins/pe-7.png`
+  - Destination: https://nookandproper.vercel.app/p/a-toy-that-keeps-moving-rechargeable
+  - Goes to Amazon: https://www.amazon.com/dp/B0D6W8B4FM?tag=mykada-20
+- **Twelve Bins That Turn a Shelf Into a System** (Home Organisation)
+  - Pin image: `/pins/ho-7.png`
+  - Destination: https://nookandproper.vercel.app/p/twelve-bins-that-turn-a-shelf-into-a-system
+  - Goes to Amazon: https://www.amazon.com/dp/B0BMFKGVXD?tag=mykada-20
 - **The Cheap Fix for a Bright Room** (Sleep & Comfort)
   - Pin image: `/pins/slp-6.png`
   - Destination: https://nookandproper.vercel.app/p/the-cheap-fix-for-a-bright-room
