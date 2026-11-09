@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-09",
+    "cat": "home-organization",
+    "title": "The Door Is the Last Space You Own, Nine Tiers",
+    "body": "The inside of a cupboard door is usually dead space. Nine white metal tiers turn it into a pantry rack that is still reachable when the shelf in front is full. It hangs on the door instead of being screwed in, so a rental survives it. Check the thickness of the door's top edge first: a thick moulded door needs a wider hook than a flat one.",
+    "pin": "ho-8.png",
+    "link": "https://www.amazon.com/dp/B0BX7PKKKQ?tag=mykada-20",
+    "price": "$39.99"
+  },
+  {
+    "date": "2026-11-09",
+    "cat": "sleep-comfort",
+    "title": "Silk Against the Skin, Two in the Pack",
+    "body": "Silk is for skin and hair rather than for blocking light — it is softer than polyester and does not pull at the hairline. Two in the pack means one can be washed while the other is worn, which is the only way a mask stays hygienic. Hand wash in cool water; a machine wash takes the sheen off and then it feels like any other mask.",
+    "pin": "slp-7.png",
+    "link": "https://www.amazon.com/dp/B08817H6HS?tag=mykada-20",
+    "price": "$8.99"
+  },
+  {
+    "date": "2026-11-09",
+    "cat": "home-fitness",
+    "title": "The Whole Gym Fits in a Drawer, Five Bands",
+    "body": "Five loop bands in one bag replace a rack of machines for the movements that matter at home: bridges, lateral walks, rows around a door frame. The resistance ladder means one band is always the right one. Start with the lightest — most people begin too heavy, decide bands do not work, and quit. The guide that comes with it is genuinely worth reading.",
+    "pin": "fit-7.png",
+    "link": "https://www.amazon.com/dp/B01AVDVHTI?tag=mykada-20",
+    "price": "$9.98"
+  },
+  {
     "date": "2026-11-08",
     "cat": "kitchen-air-fryer",
     "title": "The Basket Stops Being a Chore, Liners",
