@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-10",
+    "cat": "home-fitness",
+    "title": "Add Weight to the Walk You Already Take",
+    "body": "A weighted vest adds load to walking, which is the exercise most people already do. Start at six or ten pounds and add only when the same route feels easy, because the point is a harder walk and not a sore back. Adjustable straps stop it swinging, and a swinging vest is what makes people give up on vests.",
+    "pin": "fit-8.png",
+    "link": "https://www.amazon.com/dp/B07518RBH2?tag=mykada-20",
+    "price": "$26.49"
+  },
+  {
+    "date": "2026-11-10",
+    "cat": "kitchen-air-fryer",
+    "title": "Half a Second, Then You Know",
+    "body": "Half a second is the difference between checking and not bothering. The reason people under-use thermometers is the wait: a slow one means standing over the pan while the outside overcooks. This one is fast enough that you test the middle and put it straight back. Keep it to the probe when washing — the body is not built for soaking.",
+    "pin": "kit-8.png",
+    "link": "https://www.amazon.com/dp/B0F5X4FM3Q?tag=mykada-20",
+    "price": "$19.99"
+  },
+  {
+    "date": "2026-11-10",
+    "cat": "pet-enrichment",
+    "title": "The Ball That Survives the Lake, Chuckit Ultra",
+    "body": "The Ultra ball is rubber rather than tennis felt, so it does not collect grit that grinds teeth down, and it floats — which is the difference between fetch in the water and fetch from the bank. Four in the pack means one is always dry. Medium at 2.5 inches suits most 20-60 lb dogs; size up if your dog tends to swallow rather than carry.",
+    "pin": "pe-8.png",
+    "link": "https://www.amazon.com/dp/B00OQYBWPI?tag=mykada-20",
+    "price": "$15.98"
+  },
+  {
     "date": "2026-11-09",
     "cat": "home-organization",
     "title": "The Door Is the Last Space You Own, Nine Tiers",

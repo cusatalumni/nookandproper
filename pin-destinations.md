@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **Add Weight to the Walk You Already Take** (Home Fitness)
+  - Pin image: `/pins/fit-8.png`
+  - Destination: https://nookandproper.vercel.app/p/add-weight-to-the-walk-you-already-take
+  - Goes to Amazon: https://www.amazon.com/dp/B07518RBH2?tag=mykada-20
+- **Half a Second, Then You Know** (Kitchen & Air Fryer)
+  - Pin image: `/pins/kit-8.png`
+  - Destination: https://nookandproper.vercel.app/p/half-a-second-then-you-know
+  - Goes to Amazon: https://www.amazon.com/dp/B0F5X4FM3Q?tag=mykada-20
+- **The Ball That Survives the Lake, Chuckit Ultra** (Pet Enrichment)
+  - Pin image: `/pins/pe-8.png`
+  - Destination: https://nookandproper.vercel.app/p/the-ball-that-survives-the-lake-chuckit-ultra
+  - Goes to Amazon: https://www.amazon.com/dp/B00OQYBWPI?tag=mykada-20
 - **The Door Is the Last Space You Own, Nine Tiers** (Home Organisation)
   - Pin image: `/pins/ho-8.png`
   - Destination: https://nookandproper.vercel.app/p/the-door-is-the-last-space-you-own-nine-tiers
