@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **Two Minutes of Rope Beats Thirty of Nothing** (Home Fitness)
+  - Pin image: `/pins/fit-9.png`
+  - Destination: https://nookandproper.vercel.app/p/two-minutes-of-rope-beats-thirty-of-nothing
+  - Goes to Amazon: https://www.amazon.com/dp/B09DF9NWC7?tag=mykada-20
+- **The Cheap Toy Dogs Actually Keep, Squeaky Duck** (Pet Enrichment)
+  - Pin image: `/pins/pe-9.png`
+  - Destination: https://nookandproper.vercel.app/p/the-cheap-toy-dogs-actually-keep-squeaky-duck
+  - Goes to Amazon: https://www.amazon.com/dp/B09BBM5CX8?tag=mykada-20
+- **Fifty Nights of Quiet, 33 dB** (Sleep & Comfort)
+  - Pin image: `/pins/slp-8.png`
+  - Destination: https://nookandproper.vercel.app/p/fifty-nights-of-quiet-33-db
+  - Goes to Amazon: https://www.amazon.com/dp/B0051U7W32?tag=mykada-20
 - **Add Weight to the Walk You Already Take** (Home Fitness)
   - Pin image: `/pins/fit-8.png`
   - Destination: https://nookandproper.vercel.app/p/add-weight-to-the-walk-you-already-take

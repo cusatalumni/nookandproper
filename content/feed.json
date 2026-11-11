@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-11",
+    "cat": "home-fitness",
+    "title": "Two Minutes of Rope Beats Thirty of Nothing",
+    "body": "A rope is the cheapest cardio there is, and the reason people quit is the tangle rather than the effort. A cable rope on bearings spins cleanly and adjusts to height, so a tall person and a short one can share the same rope. Two minutes on, one minute off, five rounds, is a real session in under fifteen minutes. Check the ceiling first.",
+    "pin": "fit-9.png",
+    "link": "https://www.amazon.com/dp/B09DF9NWC7?tag=mykada-20",
+    "price": "$8.99"
+  },
+  {
+    "date": "2026-11-11",
+    "cat": "pet-enrichment",
+    "title": "The Cheap Toy Dogs Actually Keep, Squeaky Duck",
+    "body": "Six dollars for a toy that gets destroyed in a week beats twenty for one that gets ignored. The crinkle body and the squeaker give a dog two reasons to come back to it, and the shape is soft enough to carry from room to room. Buy two: the second is for when the first is in the wash and the dog has decided nothing else will do.",
+    "pin": "pe-9.png",
+    "link": "https://www.amazon.com/dp/B09BBM5CX8?tag=mykada-20",
+    "price": "$6.79"
+  },
+  {
+    "date": "2026-11-11",
+    "cat": "sleep-comfort",
+    "title": "Fifty Nights of Quiet, 33 dB",
+    "body": "Thirty-three decibels is about as much attenuation as foam can give: enough for traffic and a snoring partner, not enough for a building site. Foam works because it expands to the shape of your ear canal, so roll it thin, pull the ear up and back, and hold it while it swells. Fifty pairs lasts most people a year. Reusable plugs seal less well.",
+    "pin": "slp-8.png",
+    "link": "https://www.amazon.com/dp/B0051U7W32?tag=mykada-20",
+    "price": "$9.89"
+  },
+  {
     "date": "2026-11-10",
     "cat": "home-fitness",
     "title": "Add Weight to the Walk You Already Take",
