@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **Pull, Press, Row — One Band Set** (Home Fitness)
+  - Pin image: `/pins/fit-10.png`
+  - Destination: https://nookandproper.vercel.app/p/pull-press-row-one-band-set
+  - Goes to Amazon: https://www.amazon.com/dp/B07DWSPQQY?tag=mykada-20
+- **Fifteen Minutes of Thinking, One Puzzle** (Pet Enrichment)
+  - Pin image: `/pins/pe-10.png`
+  - Destination: https://nookandproper.vercel.app/p/fifteen-minutes-of-thinking-one-puzzle
+  - Goes to Amazon: https://www.amazon.com/dp/B08RY2YRFG?tag=mykada-20
+- **A Pillow That Holds Its Shape, Set of Two** (Sleep & Comfort)
+  - Pin image: `/pins/slp-9.png`
+  - Destination: https://nookandproper.vercel.app/p/a-pillow-that-holds-its-shape-set-of-two
+  - Goes to Amazon: https://www.amazon.com/dp/B08DTH86Q2?tag=mykada-20
 - **Two Minutes of Rope Beats Thirty of Nothing** (Home Fitness)
   - Pin image: `/pins/fit-9.png`
   - Destination: https://nookandproper.vercel.app/p/two-minutes-of-rope-beats-thirty-of-nothing
