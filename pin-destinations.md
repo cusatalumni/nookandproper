@@ -3,6 +3,18 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **Sleep on Your Side Again, U-Shaped** (Sleep & Comfort)
+  - Pin image: `/pins/slp-11.png`
+  - Destination: https://nookandproper.vercel.app/p/sleep-on-your-side-again-u-shaped
+  - Goes to Amazon: https://www.amazon.com/dp/B08YYVRXLM?tag=mykada-20
+- **For the Dog That Already Solved the Easy One** (Pet Enrichment)
+  - Pin image: `/pins/pe-11.png`
+  - Destination: https://nookandproper.vercel.app/p/for-the-dog-that-already-solved-the-easy-one
+  - Goes to Amazon: https://www.amazon.com/dp/B09XXPCB4T?tag=mykada-20
+- **The Cheapest Way to Fix a Hard Mattress** (Sleep & Comfort)
+  - Pin image: `/pins/slp-10.png`
+  - Destination: https://nookandproper.vercel.app/p/the-cheapest-way-to-fix-a-hard-mattress
+  - Goes to Amazon: https://www.amazon.com/dp/B07D5DN269?tag=mykada-20
 - **Pull, Press, Row — One Band Set** (Home Fitness)
   - Pin image: `/pins/fit-10.png`
   - Destination: https://nookandproper.vercel.app/p/pull-press-row-one-band-set

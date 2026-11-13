@@ -1,5 +1,32 @@
 [
   {
+    "date": "2026-11-13",
+    "cat": "sleep-comfort",
+    "title": "Sleep on Your Side Again, U-Shaped",
+    "body": "A U-shaped pillow does the job two ordinary pillows cannot: it supports the bump and the back at the same time, so you can sleep on your side without rolling forward. The shape also works for sitting up in bed afterwards. It takes up most of a double bed, which is the real cost. The cover comes off, and it will need washing often.",
+    "pin": "slp-11.png",
+    "link": "https://www.amazon.com/dp/B08YYVRXLM?tag=mykada-20",
+    "price": "$44.99"
+  },
+  {
+    "date": "2026-11-13",
+    "cat": "pet-enrichment",
+    "title": "For the Dog That Already Solved the Easy One",
+    "body": "A second-level puzzle suits a dog that already understands the first. Sliders, flaps and a treat drawer give three different actions, so the dog has to try rather than repeat one trick. Wash it weekly: crumbs left in the tracks are what make a puzzle boring. If your dog starts chewing the board instead of solving it, drop back a level rather than pushing through.",
+    "pin": "pe-11.png",
+    "link": "https://www.amazon.com/dp/B09XXPCB4T?tag=mykada-20",
+    "price": "$13.99"
+  },
+  {
+    "date": "2026-11-13",
+    "cat": "sleep-comfort",
+    "title": "The Cheapest Way to Fix a Hard Mattress",
+    "body": "A hard mattress is cheaper to fix with a topper than to replace. Memory foam takes the pressure off hips and shoulders, which is where side sleepers wake up sore, and a queen size covers the whole surface rather than sliding around in the night. It sleeps warm — that is the honest trade-off with memory foam, and a cooler pillowcase helps more than a cooling topper claim.",
+    "pin": "slp-10.png",
+    "link": "https://www.amazon.com/dp/B07D5DN269?tag=mykada-20",
+    "price": "$36.98"
+  },
+  {
     "date": "2026-11-12",
     "cat": "home-fitness",
     "title": "Pull, Press, Row — One Band Set",
