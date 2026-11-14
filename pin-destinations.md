@@ -3,6 +3,10 @@
 Use the URL as the pin's destination link. The Amazon link is what the page's
 button goes to — do not paste that into Pinterest.
 
+- **The Bowl That Makes Dinner Last Longer** (Pet Enrichment)
+  - Pin image: `/pins/pe-12.png`
+  - Destination: https://nookandproper.vercel.app/p/the-bowl-that-makes-dinner-last-longer
+  - Goes to Amazon: https://www.amazon.com/dp/B084RZ1B25?tag=mykada-20
 - **Sleep on Your Side Again, U-Shaped** (Sleep & Comfort)
   - Pin image: `/pins/slp-11.png`
   - Destination: https://nookandproper.vercel.app/p/sleep-on-your-side-again-u-shaped
